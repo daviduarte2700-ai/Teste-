@@ -66,6 +66,14 @@ async def receber(request: Request, tarefas_bg: BackgroundTasks, token: str | No
     return {"ok": True}
 
 
+@app.post("/tarefas/resumo_marketing")
+def resumo_marketing(request: Request):
+    from hashtag_analista.analista import Analista
+
+    _confere(request.headers.get("x-segredo"), servicos()[0].tarefas_segredo)
+    return Analista.do_ambiente().rodar()
+
+
 @app.post("/tarefas/{nome}")
 def rodar_tarefa(nome: str, request: Request):
     config, repo, wa, _ = servicos()

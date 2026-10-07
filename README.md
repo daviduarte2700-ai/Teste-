@@ -79,3 +79,21 @@ Os testes usam um banco e um WhatsApp em memória (`tests/fakes.py`) e simulam a
 - Tela no painel para montar a escala e aprovar documentos (hoje é direto no Supabase).
 - Templates da Meta, se o provedor for a Cloud API oficial.
 - Transcrição de áudio: hoje o bot pede para o motoboy escrever.
+
+---
+
+# Analista de marketing (SendFlow + anúncios)
+
+Todo dia o analista junta os números de marketing e manda um resumo no WhatsApp:
+
+- **SendFlow:** entradas, saídas e cliques por dia de cada lançamento (`GET /releases/{id}/analytics` da SendAPI, `https://sendapi.sendflow.pro`, com o token Bearer de *Painel SendFlow → API Keys*).
+- **Anúncios:** investimento no Meta Ads, leads, custo por lead, por reunião e por venda, por campanha e por anúncio. Esses números vêm do painel comercial (painel.hashtagentrega.com), que a função `sync` grava na tabela `cache` a cada 10 minutos. Também entram os leads por dia e por origem.
+- Ele guarda um retrato do dia em `mkt_snapshots`. É com esse retrato que calcula o gasto de cada dia, porque o painel só mostra o acumulado do mês.
+- O Claude compara o dia anterior com a média dos 7 dias antes dele. Aponta o que está fora do normal (queda de entradas, saídas maiores que entradas, anúncio gastando sem trazer lead) e sugere até 3 ações.
+- O resumo entra na `whatsapp_fila` com destino `marketing`.
+
+**Como ativar**
+1. Aplique `supabase/migrations/20261008090000_analista_marketing.sql`.
+2. Em `whatsapp_destinos`, preencha o `grupo_id` da chave `marketing` com o grupo que deve receber o resumo.
+3. Preencha no servidor `SENDFLOW_TOKEN` e `SENDFLOW_LANCAMENTOS` (os ids dos lançamentos, separados por vírgula).
+4. Cron diário (por exemplo, às 8h): `POST /tarefas/resumo_marketing` com o cabeçalho `x-segredo`, ou `python -m hashtag_analista`.
