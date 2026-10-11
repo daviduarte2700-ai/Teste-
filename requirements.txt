@@ -1,0 +1,6 @@
+# Usado pela Vercel. Mantenha igual às dependências do pyproject.toml.
+anthropic>=1.11
+fastapi>=0.115
+uvicorn[standard]>=0.30
+supabase>=2.10
+httpx>=0.27

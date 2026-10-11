@@ -58,6 +58,24 @@ cron ──▶ POST /tarefas/{documentos_vencendo | lembrete_turnos | coberturas
    - `POST /tarefas/lembrete_turnos`: todo dia às 18h
    - `POST /tarefas/coberturas`: a cada 30 min
 
+### Deploy na Vercel (opcional)
+
+O repositório já tem `vercel.json`, `api/index.py` e `requirements.txt`. Com a CLI da Vercel logada:
+
+```bash
+vercel          # preview
+vercel --prod   # produção
+```
+
+Cadastre as variáveis do `.env.example` em *Settings → Environment Variables* do projeto.
+
+Cuidados, porque a Vercel roda o app como função serverless e não como servidor contínuo:
+- A trava por motoboy fica na memória. Com várias instâncias, duas mensagens seguidas do mesmo motoboy podem ser atendidas ao mesmo tempo.
+- O atendimento roda depois da resposta do webhook. Se a função for congelada antes de terminar, a resposta ao motoboy pode se perder. O limite configurado é de 60 segundos por chamada.
+- O cron da Vercel chama com GET e sem o cabeçalho `x-segredo`, então as tarefas do passo 5 precisam de um agendador externo (cron-job.org, GitHub Actions etc.).
+
+Se algum desses pontos causar problema, use Railway, Render ou Fly.io.
+
 ## Rotina da coordenação
 
 - **Montar a escala:** insira os turnos na tabela `turnos` com status `escalado` (com motoboy) ou `aberto` (sem motoboy, que aparece para os motoboys da cidade). Por enquanto isso é feito pelo editor de tabelas do Supabase ou importando um CSV.

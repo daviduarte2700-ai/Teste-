@@ -1,0 +1,6 @@
+.venv
+.env
+tests
+supabase
+__pycache__
+*.pyc
