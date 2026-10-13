@@ -1,0 +1,586 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta property="og:title" content="Opeer para Empresas"><meta property="og:description" content="Turnos avulsos para bares, restaurantes e eventos. Gente verificada, Pix no dia seguinte, suporte de verdade."><meta property="og:image" content="https://opeer.com.br/og.png"><meta property="og:type" content="website"><style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Opeer para Empresas</title>
+<meta name="description" content="Opeer: turnos avulsos para bares, restaurantes e eventos.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: site claro da marca. Seções alternam branco e névoa, com uma faixa navy (suporte) e uma faixa cyan (chamada final). Peças de produto (quadro de turnos, painel de candidatos, celular do freela) fazem o papel de foto. */
+:root {
+  --cyan: #009FD1;
+  --cyan-deep: #0078A8;
+  --cyan-soft: #E6F4FB;
+  --navy: #0B2E47;
+  --navy-2: #12405F;
+  --ink: #14202B;
+  --grey: #5C6B78;
+  --mist: #F4F7F9;
+  --line: #E1E9EE;
+  --white: #FFFFFF;
+  --ok: #0E9F6E;
+  --ok-soft: #E3F6EE;
+  --amber: #A86A10;
+  --amber-soft: #FDF2DF;
+  --f-display: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-body: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --r: 14px;
+  --shadow: 0 1px 2px rgba(11,46,71,.06), 0 12px 32px -12px rgba(11,46,71,.18);
+  color-scheme: light;
+}
+html { scroll-behavior: smooth; background: var(--white); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+body { background: var(--white); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+* { box-sizing: border-box; }
+h1, h2, h3, h4 { font-family: var(--f-display); color: var(--navy); margin: 0; text-wrap: balance; line-height: 1.12; }
+p { margin: 0; }
+a { color: inherit; }
+ul { margin: 0; padding: 0; list-style: none; }
+.wrap { max-width: 1160px; margin-inline: auto; padding-inline: clamp(16px, 4vw, 32px); }
+section { padding-block: clamp(56px, 8vw, 104px); }
+.tint { background: var(--mist); }
+:focus-visible { outline: 3px solid var(--cyan); outline-offset: 2px; border-radius: 6px; }
+
+/* type */
+.eyebrow { font-family: var(--f-body); font-size: 12.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--cyan-deep); }
+h1 { font-size: clamp(2.35rem, 5.4vw, 4.2rem); font-weight: 700; letter-spacing: -.035em; line-height: 1.04; }
+h1 em, h2 em { font-style: normal; color: var(--cyan); }
+h2 { font-size: clamp(1.8rem, 3.4vw, 2.65rem); font-weight: 700; letter-spacing: -.028em; }
+h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; }
+.lead { font-size: clamp(1.05rem, 1.5vw, 1.2rem); color: var(--grey); max-width: 58ch; }
+.muted { color: var(--grey); }
+.small { font-size: 13px; color: var(--grey); }
+.sec-head { display: grid; gap: 14px; max-width: 720px; margin-bottom: clamp(32px, 5vw, 56px); }
+.sec-head.center { margin-inline: auto; text-align: center; justify-items: center; }
+
+/* buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: var(--f-display); font-weight: 600; font-size: 15.5px; padding: 14px 22px; border-radius: 12px; text-decoration: none; border: 1.5px solid transparent; cursor: pointer; transition: transform .15s ease, background .15s ease, box-shadow .15s ease; white-space: nowrap; }
+.btn:hover { transform: translateY(-1px); }
+.btn svg { width: 18px; height: 18px; flex: none; }
+.btn-primary { background: var(--cyan); color: var(--white); box-shadow: 0 8px 20px -8px rgba(0,159,209,.7); }
+.btn-primary:hover { background: var(--cyan-deep); }
+.btn-navy { background: var(--navy); color: var(--white); }
+.btn-navy:hover { background: var(--navy-2); }
+.btn-ghost { background: var(--white); color: var(--navy); border-color: var(--line); }
+.btn-ghost:hover { border-color: var(--cyan); color: var(--cyan-deep); }
+.btn-white { background: var(--white); color: var(--navy); }
+.btn-wa { background: #1FAF53; color: var(--white); box-shadow: 0 8px 20px -8px rgba(31,175,83,.7); }
+.btn-wa:hover { background: #17964A; }
+.btn-sm { padding: 10px 16px; font-size: 14px; border-radius: 10px; }
+.btn-lg { padding: 17px 28px; font-size: 17px; }
+.btns { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* header */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: rgba(255,255,255,.9); backdrop-filter: saturate(1.4) blur(12px); -webkit-backdrop-filter: saturate(1.4) blur(12px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 68px; }
+.brand { display: inline-flex; align-items: center; text-decoration: none; }
+.brand svg { height: 34px; width: auto; display: block; }
+.top nav { display: flex; align-items: center; gap: 26px; font-size: 14.5px; font-weight: 600; color: var(--grey); }
+.top nav a { text-decoration: none; }
+.top nav a:hover { color: var(--cyan-deep); }
+.top .act { display: flex; gap: 10px; align-items: center; }
+.menu { position: relative; display: none; }
+.menu summary { list-style: none; cursor: pointer; width: 42px; height: 42px; border-radius: 10px; border: 1px solid var(--line); display: grid; place-items: center; background: var(--white); }
+.menu summary::-webkit-details-marker { display: none; }
+.menu summary span, .menu summary span::before, .menu summary span::after { display: block; width: 18px; height: 2px; background: var(--navy); border-radius: 2px; position: relative; content: ""; }
+.menu summary span::before { position: absolute; top: -6px; }
+.menu summary span::after { position: absolute; top: 6px; }
+.menu .drop { position: absolute; right: 0; top: 50px; background: var(--white); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); padding: 8px; display: grid; min-width: 220px; }
+.menu .drop a { padding: 11px 14px; border-radius: 9px; text-decoration: none; font-weight: 600; color: var(--navy); font-size: 15px; }
+.menu .drop a:hover { background: var(--mist); }
+@media (max-width: 900px) {
+  .top nav { display: none; }
+  .menu { display: block; }
+  .top .act .hide-m { display: none; }
+}
+@media (max-width: 440px) { .top .act .btn-wa span { display: none; } .top .act .btn-wa { padding-inline: 12px; } .brand svg { height: 30px; } }
+
+/* chips + status */
+.chip { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+.chip.open { background: var(--cyan-soft); color: var(--cyan-deep); }
+.chip.ok { background: var(--ok-soft); color: var(--ok); }
+.chip.done { background: var(--mist); color: var(--grey); }
+.chip.wait { background: var(--amber-soft); color: var(--amber); }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 0 rgba(14,159,110,.5); animation: pulse 2s infinite; flex: none; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(14,159,110,.45); } 70% { box-shadow: 0 0 0 8px rgba(14,159,110,0); } 100% { box-shadow: 0 0 0 0 rgba(14,159,110,0); } }
+.tag { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--cyan-deep); background: var(--white); border: 1px solid var(--line); padding: 6px 13px 6px 8px; border-radius: 999px; }
+.tag i { width: 20px; height: 20px; border-radius: 50%; background: var(--cyan-soft); display: grid; place-items: center; font-style: normal; }
+.tag i svg { width: 12px; height: 12px; }
+
+/* hero shell */
+.hero { padding-block: clamp(40px, 6vw, 80px) clamp(56px, 7vw, 96px); background: linear-gradient(180deg, var(--cyan-soft) 0%, var(--white) 78%); position: relative; overflow: hidden; }
+.hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(32px, 5vw, 64px); align-items: center; }
+.hero-copy { display: grid; gap: 22px; justify-items: start; min-width: 0; }
+.hero-proof { display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 14px; font-weight: 600; color: var(--navy); }
+.hero-proof span { display: inline-flex; align-items: center; gap: 8px; }
+.hero-proof svg { width: 18px; height: 18px; color: var(--cyan); flex: none; }
+.hero-ring { position: absolute; right: -180px; top: -160px; width: 560px; height: 560px; opacity: .07; pointer-events: none; color: var(--cyan); }
+.hero > .wrap { position: relative; z-index: 1; }
+@media (max-width: 940px) { .hero-grid { grid-template-columns: 1fr; } }
+
+/* roles marquee */
+.roles { border-block: 1px solid var(--line); background: var(--white); overflow: hidden; padding-block: 18px; }
+.roles .track { display: flex; gap: 12px; width: max-content; animation: slide 46s linear infinite; }
+.roles:hover .track { animation-play-state: paused; }
+.roles span { font-family: var(--f-display); font-weight: 600; font-size: 15px; color: var(--navy); padding: 9px 18px; border-radius: 999px; background: var(--mist); white-space: nowrap; display: inline-flex; align-items: center; gap: 10px; }
+.roles span::before { content: ""; width: 7px; height: 7px; border-radius: 50%; border: 2px solid var(--cyan); }
+@keyframes slide { to { transform: translateX(-50%); } }
+
+/* steps */
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; counter-reset: s; }
+.steps.three { grid-template-columns: repeat(3, 1fr); }
+.step { display: grid; gap: 10px; align-content: start; padding: 26px 22px; background: var(--white); border: 1px solid var(--line); border-radius: var(--r); position: relative; min-width: 0; }
+.step::before { counter-increment: s; content: counter(s); font-family: var(--f-display); font-weight: 700; font-size: 14px; color: var(--white); background: var(--cyan); width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 6px; }
+.step p { color: var(--grey); font-size: 15px; }
+@media (max-width: 960px) { .steps, .steps.three { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .steps, .steps.three { grid-template-columns: 1fr; } }
+
+/* feature list */
+.feats { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 3vw, 40px); }
+.feat { display: grid; gap: 10px; align-content: start; padding-top: 22px; border-top: 2px solid var(--line); min-width: 0; }
+.feat .ic { width: 44px; height: 44px; border-radius: 12px; background: var(--cyan-soft); color: var(--cyan-deep); display: grid; place-items: center; margin-bottom: 6px; }
+.feat .ic svg { width: 22px; height: 22px; }
+.feat p { color: var(--grey); font-size: 15px; }
+@media (max-width: 860px) { .feats { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .feats { grid-template-columns: 1fr; } }
+
+/* navy band */
+.band { background: var(--navy); color: #C9D9E6; position: relative; overflow: hidden; }
+.band h2, .band h3 { color: var(--white); }
+.band .eyebrow { color: #6FD0F0; }
+.band .lead { color: #B5C9D8; }
+.band-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+.nums { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,.12); border-radius: var(--r); overflow: hidden; }
+.nums div { background: var(--navy); padding: 26px 24px; display: grid; gap: 4px; }
+.nums b { font-family: var(--f-display); font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--white); font-weight: 700; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.nums small { font-size: 14px; color: #9FB6C8; }
+.band .note { font-size: 12.5px; color: #8EA7BA; margin-top: 14px; }
+.band-ring { position: absolute; left: -140px; bottom: -200px; width: 480px; height: 480px; opacity: .06; }
+@media (max-width: 860px) { .band-grid { grid-template-columns: 1fr; } }
+
+/* cta band */
+.cta { background: var(--cyan); color: var(--white); position: relative; overflow: hidden; }
+.cta h2 { color: var(--white); }
+.cta p { color: #E3F5FC; }
+.cta .inner { display: grid; gap: 22px; justify-items: center; text-align: center; position: relative; z-index: 1; }
+.cta-ring { position: absolute; width: 520px; height: 520px; right: -120px; top: -140px; opacity: .14; }
+.cta-ring.l { left: -180px; right: auto; top: auto; bottom: -260px; }
+
+/* faq */
+.faq-list { display: grid; gap: 10px; max-width: 820px; margin-inline: auto; }
+.faq-list details { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 0 22px; }
+.faq-list details[open] { border-color: #BFE3F2; }
+.faq-list summary { cursor: pointer; list-style: none; font-family: var(--f-display); font-weight: 600; color: var(--navy); font-size: 16px; padding: 18px 0; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after { content: "+"; font-size: 22px; font-weight: 500; color: var(--cyan); line-height: 1; flex: none; transition: transform .2s ease; }
+.faq-list details[open] summary::after { transform: rotate(45deg); }
+.faq-list details p { color: var(--grey); padding-bottom: 20px; max-width: 68ch; }
+
+/* footer */
+.foot { background: var(--mist); border-top: 1px solid var(--line); padding-block: 56px 32px; }
+.foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; }
+.foot-grid > div { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.foot h4 { font-family: var(--f-body); font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--navy); font-weight: 700; margin-bottom: 4px; }
+.foot a { text-decoration: none; color: var(--grey); font-size: 14.5px; }
+.foot a:hover { color: var(--cyan-deep); }
+.foot .brand svg { height: 32px; }
+.foot .bottom { margin-top: 40px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px; color: var(--grey); }
+@media (max-width: 860px) { .foot-grid { grid-template-columns: 1fr 1fr; } .foot-grid > div:first-child { grid-column: 1 / -1; } }
+
+/* product mockups shared */
+.panel { background: var(--white); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow); overflow: hidden; min-width: 0; }
+.panel-h { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--line); }
+.panel-h b { font-family: var(--f-display); font-weight: 600; color: var(--navy); font-size: 15px; display: inline-flex; align-items: center; gap: 10px; }
+.panel-h time { font-size: 13px; color: var(--grey); font-weight: 600; font-variant-numeric: tabular-nums; }
+.caption { font-size: 12px; color: var(--grey); margin-top: 10px; text-align: right; }
+.avatar { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-family: var(--f-display); font-weight: 600; font-size: 13px; color: var(--navy); background: var(--cyan-soft); flex: none; }
+
+/* phone */
+.phone { width: 300px; max-width: 100%; aspect-ratio: 300 / 610; border-radius: 44px; background: var(--navy); padding: 10px; box-shadow: 0 30px 60px -24px rgba(11,46,71,.45); position: relative; }
+.phone .scr { width: 100%; height: 100%; border-radius: 35px; background: var(--mist); overflow: hidden; display: flex; flex-direction: column; position: relative; }
+.phone .notch { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); width: 90px; height: 24px; background: var(--navy); border-radius: 20px; z-index: 3; }
+.phone .sb { display: flex; justify-content: space-between; padding: 16px 26px 8px; font-size: 11px; font-weight: 700; color: var(--navy); font-variant-numeric: tabular-nums; }
+
+.split-2 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+.split-2 > * { min-width: 0; }
+@media (max-width: 860px) { .split-2 { grid-template-columns: 1fr; } }
+
+.checks { display: grid; gap: 14px; }
+.checks li { display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: start; }
+.checks li svg { width: 22px; height: 22px; color: var(--cyan); margin-top: 1px; }
+.checks b { font-family: var(--f-display); font-weight: 600; color: var(--navy); display: block; }
+.checks span { color: var(--grey); font-size: 15px; }
+
+
+.catalog { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.cat { background: var(--white); border: 1px solid var(--line); border-radius: var(--r); padding: 20px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.cat-h { display: flex; align-items: center; gap: 10px; }
+.cat-h svg { width: 22px; height: 22px; color: var(--cyan); }
+.cat-h b { font-family: var(--f-display); font-weight: 600; color: var(--navy); font-size: 16px; }
+.cat ul { display: grid; gap: 8px; }
+.cat li { font-size: 14.5px; color: var(--ink); padding-left: 16px; position: relative; }
+.cat li::before { content: ""; position: absolute; left: 0; top: .62em; width: 6px; height: 6px; border-radius: 50%; border: 1.6px solid var(--cyan); }
+@media (max-width: 1000px) { .catalog { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 640px) { .catalog { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 380px) { .catalog { grid-template-columns: 1fr; } }
+
+/* candidates panel */
+.cand-wrap { position: relative; }
+.shift { display: grid; grid-template-columns: repeat(4, auto); justify-content: space-between; gap: 10px 18px; padding: 16px 20px; background: var(--mist); border-bottom: 1px solid var(--line); }
+.shift div { display: grid; gap: 2px; min-width: 0; }
+.shift small { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--grey); }
+.shift b { font-family: var(--f-display); font-weight: 600; color: var(--navy); font-size: 14.5px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cands { display: grid; }
+.cand { display: grid; grid-template-columns: 38px 1fr auto; gap: 14px; align-items: center; padding: 14px 20px; border-top: 1px solid var(--line); }
+.cand:first-child { border-top: 0; }
+.cand .nm { display: grid; gap: 2px; min-width: 0; }
+.cand .nm b { font-family: var(--f-display); font-weight: 600; color: var(--navy); font-size: 14.5px; }
+.cand .nm span { font-size: 12.5px; color: var(--grey); display: flex; flex-wrap: wrap; gap: 4px 10px; font-variant-numeric: tabular-nums; }
+.cand .nm span em { font-style: normal; color: var(--amber); font-weight: 700; }
+.cand .nm span .z { color: var(--ok); font-weight: 600; }
+.pick { font-family: var(--f-display); font-weight: 600; font-size: 13px; padding: 8px 14px; border-radius: 9px; border: 1.5px solid var(--cyan); background: var(--white); color: var(--cyan-deep); cursor: pointer; white-space: nowrap; }
+.pick[aria-pressed="true"] { background: var(--ok); border-color: var(--ok); color: var(--white); }
+.float { margin-top: 14px; background: var(--white); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); padding: 12px 16px; display: flex; gap: 12px; align-items: center; max-width: 330px; }
+.cand-foot { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+.cand-foot .caption { margin-top: 24px; }
+.hero-emp h1 { font-size: clamp(2.3rem, 4.6vw, 3.6rem); }
+.float .ic { width: 36px; height: 36px; border-radius: 10px; background: var(--ok-soft); color: var(--ok); display: grid; place-items: center; flex: none; }
+.float svg { width: 20px; height: 20px; }
+.float b { font-family: var(--f-display); font-weight: 600; color: var(--navy); font-size: 13.5px; display: block; }
+.float span { font-size: 12.5px; color: var(--grey); }
+@media (max-width: 520px) { .shift { grid-template-columns: 1fr 1fr; } .float { max-width: none; } .cand { padding-inline: 14px; gap: 10px; } }
+
+/* compare */
+.cmp { border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: var(--white); }
+.cmp-row { display: grid; grid-template-columns: .8fr 1fr 1fr; border-top: 1px solid var(--line); }
+.cmp-row:first-child { border-top: 0; }
+.cmp-row > div { padding: 18px 22px; display: flex; gap: 12px; align-items: flex-start; min-width: 0; }
+.cmp-row .k { font-family: var(--f-display); font-weight: 600; color: var(--navy); }
+.cmp-row .old { color: var(--grey); background: var(--mist); }
+.cmp-row .new { color: var(--ink); font-weight: 500; background: var(--cyan-soft); }
+.cmp-row svg { width: 18px; height: 18px; flex: none; margin-top: 3px; }
+.cmp-row .old svg { color: #A0AEBA; }
+.cmp-row .new svg { color: var(--cyan-deep); }
+.cmp-head > div { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding-block: 14px; }
+.cmp-head .old { color: var(--grey); }
+.cmp-head .new { color: var(--cyan-deep); }
+@media (max-width: 720px) {
+  .cmp-row { grid-template-columns: 1fr 1fr; }
+  .cmp-row .k { grid-column: 1 / -1; padding-bottom: 4px; }
+  .cmp-row:not(.cmp-head) .k { background: var(--white); }
+  .cmp-head .k { display: none; }
+  .cmp-row > div { padding: 14px 16px; font-size: 14.5px; }
+}
+
+/* new shift mock */
+.form-mock .fm { display: grid; gap: 0; }
+.fm-row { display: flex; justify-content: space-between; gap: 14px; padding: 14px 20px; border-top: 1px solid var(--line); align-items: center; }
+.fm-row:first-child { border-top: 0; }
+.fm-row small { font-size: 13px; color: var(--grey); font-weight: 600; }
+.fm-row b { font-family: var(--f-display); font-weight: 600; color: var(--navy); font-size: 14.5px; text-align: right; font-variant-numeric: tabular-nums; }
+.fm-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.fm-tags span { font-size: 12px; font-weight: 600; background: var(--mist); color: var(--navy); padding: 4px 10px; border-radius: 999px; }
+.fm-foot { padding: 16px 20px; border-top: 1px solid var(--line); background: var(--mist); display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+/* pay */
+.pay { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.pay > div { background: var(--white); border: 1px solid var(--line); border-radius: var(--r); padding: 26px 24px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.pay .big { font-family: var(--f-display); font-weight: 700; color: var(--cyan); font-size: 2rem; letter-spacing: -.02em; line-height: 1; font-variant-numeric: tabular-nums; }
+.pay p { color: var(--grey); font-size: 15px; }
+@media (max-width: 860px) { .pay { grid-template-columns: 1fr; } }
+
+/* access form */
+.acc { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
+.acc > * { min-width: 0; }
+.acc-copy { display: grid; gap: 18px; position: sticky; top: 100px; }
+form.lead-form { background: var(--white); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); padding: clamp(22px, 3.5vw, 36px); display: grid; gap: 18px; }
+.fgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fgrid > * { min-width: 0; }
+.fld { display: grid; gap: 7px; }
+.fld.full { grid-column: 1 / -1; }
+.fld label, .fld .lbl { font-size: 13.5px; font-weight: 700; color: var(--navy); }
+.fld input, .fld select { width: 100%; font: inherit; font-size: 15.5px; color: var(--ink); background: var(--white); border: 1.5px solid var(--line); border-radius: 11px; padding: 12px 14px; transition: border-color .15s, box-shadow .15s; }
+.fld select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--grey) 50%), linear-gradient(135deg, var(--grey) 50%, transparent 50%); background-position: calc(100% - 20px) 52%, calc(100% - 15px) 52%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 40px; }
+.fld input:focus, .fld select:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 0 4px var(--cyan-soft); }
+.fld.bad input, .fld.bad select { border-color: #D1495B; }
+.fld .err { font-size: 12.5px; color: #B23A4B; font-weight: 600; display: none; }
+.fld.bad .err { display: block; }
+.picks { display: flex; flex-wrap: wrap; gap: 8px; }
+.picks label { cursor: pointer; }
+.picks input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.picks span { display: inline-block; font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: 999px; border: 1.5px solid var(--line); color: var(--navy); background: var(--white); transition: all .15s; }
+.picks input:checked + span { background: var(--cyan); border-color: var(--cyan); color: var(--white); }
+.picks input:focus-visible + span { outline: 3px solid var(--cyan); outline-offset: 2px; }
+.consent { display: grid; grid-template-columns: 20px 1fr; gap: 10px; align-items: start; font-size: 13.5px; color: var(--grey); }
+.consent input { width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--cyan); }
+.consent.bad { color: #B23A4B; }
+.form-msg { border-radius: 12px; padding: 14px 16px; font-size: 14px; font-weight: 600; }
+.form-msg.warn { background: var(--amber-soft); color: var(--amber); }
+.form-msg.err { background: #FBE9EC; color: #B23A4B; }
+.done-box { display: grid; gap: 14px; justify-items: start; }
+.done-box .ic { width: 52px; height: 52px; border-radius: 50%; background: var(--ok-soft); color: var(--ok); display: grid; place-items: center; }
+.done-box .ic svg { width: 28px; height: 28px; }
+@media (max-width: 900px) { .acc { grid-template-columns: 1fr; } .acc-copy { position: static; } }
+@media (max-width: 520px) { .fgrid { grid-template-columns: 1fr; } }
+
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="o-logo" viewBox="10 -74 338 104">
+<path transform="translate(12,-71.762)" d="M98.0 48.8 97.6 44.1 97.2 41.2 96.8 39.2 95.6 34.9 94.7 32.5 93.5 29.7 92.6 27.9 91.2 25.3 88.7 21.6 86.0 18.2 82.7 14.8 80.7 13.1 78.8 11.6 75.2 9.1 71.3 7.0 67.0 5.1 62.5 3.7 60.2 3.1 57.6 2.6 53.2 2.1 48.8 2.0 44.1 2.4 41.2 2.8 39.2 3.2 34.9 4.4 32.5 5.3 29.7 6.5 27.9 7.4 25.3 8.8 21.6 11.3 18.2 14.0 14.8 17.3 13.1 19.3 11.6 21.2 9.1 24.8 7.0 28.7 5.1 33.0 3.7 37.5 3.1 39.8 2.6 42.4 2.1 46.8 2.0 51.2 2.4 55.9 2.8 58.8 3.2 60.8 4.4 65.1 5.3 67.5 6.5 70.3 7.4 72.1 8.8 74.7 11.3 78.4 14.0 81.8 17.3 85.2 19.3 86.9 21.2 88.4 24.8 90.9 28.7 93.0 33.0 94.9 37.5 96.3 39.8 96.9 42.4 97.4 46.8 97.9 51.2 98.0 55.9 97.6 58.8 97.2 60.8 96.8 65.1 95.6 67.5 94.7 70.3 93.5 72.1 92.6 74.7 91.2 78.4 88.7 81.8 86.0 85.2 82.7 86.9 80.7 88.4 78.8 90.9 75.2 93.0 71.3 94.9 67.0 96.3 62.5 96.9 60.2 97.4 57.6 97.9 53.2 98.0 48.8ZM84.7 41.8 84.7 43.3 84.4 45.5 83.7 48.8 82.7 51.7 81.8 53.6 80.9 55.1 80.0 56.6 78.8 58.2 76.6 60.5 75.1 61.8 73.6 63.0 72.1 64.0 70.6 64.8 71.0 62.3 71.3 59.2 71.2 56.5 71.0 54.1 72.0 53.0 73.0 51.7 73.9 50.4 74.6 49.0 75.2 47.5 75.7 45.9 76.2 43.1 76.2 41.5 76.2 40.2 75.8 37.7 75.4 36.1 74.9 34.8 73.6 32.2 72.5 30.7 71.4 29.4 70.0 28.0 68.7 27.0 67.0 25.9 65.2 25.1 63.9 24.6 61.6 24.0 59.8 23.8 57.9 23.8 55.8 24.0 54.1 24.3 52.1 24.9 50.7 25.6 49.2 26.4 47.6 27.5 45.9 29.0 44.3 30.9 43.2 32.5 42.0 34.9 41.3 37.1 40.9 39.2 40.7 41.0 40.9 43.8 41.1 45.3 41.6 46.9 42.5 49.3 44.0 51.7 45.0 53.0 45.9 54.1 47.0 55.0 48.3 56.0 50.5 57.4 53.1 58.4 54.7 58.9 55.7 59.0 55.8 59.1 55.5 61.2 55.0 63.0 54.0 65.4 52.8 67.2 50.7 66.6 48.4 65.8 46.1 64.7 44.3 63.6 42.5 62.3 40.4 60.5 39.1 59.3 37.7 57.5 36.5 55.8 35.3 53.9 34.2 51.6 33.5 49.6 32.9 47.3 32.5 45.0 32.3 43.1 32.2 40.9 32.4 38.5 32.9 35.8 33.5 33.5 34.4 31.0 35.3 29.1 37.0 26.4 38.5 24.5 40.4 22.5 42.5 20.7 44.3 19.4 47.0 17.9 49.0 17.0 51.6 16.2 54.2 15.6 56.7 15.3 59.1 15.3 61.4 15.4 64.2 15.9 66.6 16.5 69.0 17.4 71.4 18.7 73.6 20.1 75.5 21.5 77.5 23.4 79.2 25.4 80.6 27.3 82.1 30.0 83.0 32.1 83.8 34.7 84.4 37.2 84.7 39.7 84.7 41.8ZM47.4 32.9 50.0 33.7 52.3 34.5 53.9 35.3 56.6 37.0 58.5 38.5 60.5 40.4 62.4 42.6 64.0 44.9 65.2 47.1 66.2 49.5 66.9 51.6 67.4 54.2 67.7 56.9 67.8 59.1 67.6 61.5 67.1 64.2 66.5 66.5 65.6 69.0 64.7 70.9 63.0 73.6 61.5 75.5 59.6 77.5 57.5 79.3 55.7 80.6 53.0 82.1 51.0 83.0 48.4 83.8 45.8 84.4 43.3 84.7 40.9 84.7 38.6 84.6 35.8 84.1 33.4 83.5 31.0 82.5 28.6 81.3 26.4 80.0 24.5 78.5 22.5 76.6 20.8 74.6 19.4 72.7 17.9 70.0 17.0 67.9 16.2 65.3 15.6 62.8 15.3 60.3 15.3 57.8 15.4 55.6 15.9 52.7 16.7 50.0 17.8 47.3 19.1 44.9 20.7 42.5 22.5 40.4 24.9 38.2 27.2 36.5 29.4 35.2 29.0 37.7 28.7 40.8 28.8 43.5 29.1 45.9 28.0 47.0 27.0 48.3 25.6 50.7 24.6 53.1 24.2 54.7 23.9 56.5 23.8 59.0 24.1 61.8 24.8 64.5 25.4 66.0 26.1 67.3 27.3 69.2 28.4 70.4 29.6 71.6 30.9 72.7 32.5 73.8 34.0 74.6 35.5 75.2 37.1 75.7 38.8 76.0 40.5 76.2 42.5 76.2 44.2 76.0 45.9 75.7 47.9 75.0 49.3 74.4 50.8 73.6 52.8 72.2 54.7 70.4 56.0 68.7 57.4 66.5 58.2 64.5 58.9 62.3 59.2 59.8 59.2 57.2 59.1 55.8 58.7 54.1 57.8 51.4 57.1 50.0 56.3 48.7 55.5 47.6 54.5 46.4 52.4 44.5 50.0 42.9 48.6 42.2 46.9 41.6 45.3 41.1 44.3 41.0 44.2 40.9 44.5 38.6 45.2 36.2 46.0 34.6 46.7 33.5 47.2 32.9 47.4 32.9ZM53.5 50.0 53.4 50.8 53.2 51.4 52.9 52.0 52.4 52.5 52.0 52.9 51.3 53.3 50.6 53.5 49.8 53.5 49.1 53.4 48.5 53.1 47.9 52.8 47.4 52.3 47.0 51.7 46.7 51.2 46.5 50.6 46.5 49.8 46.6 49.1 46.9 48.5 47.2 47.9 47.7 47.4 48.3 47.0 48.8 46.7 49.4 46.5 50.2 46.5 50.9 46.6 51.5 46.9 52.5 47.6 52.9 48.0 53.3 48.7 53.5 49.4 53.5 50.0Z" fill-rule="evenodd" style="fill:var(--sym,#009FD1)"/>
+<path transform="translate(126,0)" d="M2.184 -21.762Q2.184 -28.47 5.148 -33.579Q8.112 -38.688 13.260000000000002 -41.418000000000006Q18.408 -44.148 24.804 -44.148Q31.2 -44.148 36.348 -41.418000000000006Q41.496 -38.688 44.46 -33.579Q47.424 -28.47 47.424 -21.762Q47.424 -15.054 44.421 -9.945Q41.418 -4.836 36.231 -2.1060000000000003Q31.044 0.624 24.648 0.624Q18.252 0.624 13.143 -2.1060000000000003Q8.034 -4.836 5.109 -9.905999999999999Q2.184 -14.975999999999999 2.184 -21.762ZM33.852 -21.762Q33.852 -26.988 31.238999999999997 -29.796Q28.626 -32.604 24.804 -32.604Q20.904 -32.604 18.33 -29.835Q15.756 -27.066 15.756 -21.762Q15.756 -16.536 18.291 -13.728000000000002Q20.826 -10.92 24.648 -10.92Q28.47 -10.92 31.160999999999998 -13.728000000000002Q33.852 -16.536 33.852 -21.762Z M78.93599999999999 -44.148Q84.318 -44.148 88.686 -41.418000000000006Q93.054 -38.688 95.589 -33.618Q98.124 -28.548 98.124 -21.84Q98.124 -15.132 95.589 -10.023Q93.054 -4.914 88.686 -2.145Q84.318 0.624 78.93599999999999 0.624Q74.41199999999999 0.624 70.941 -1.248Q67.47 -3.12 65.52 -6.084V20.748H52.181999999999995V-43.524H65.52V-37.362Q67.47 -40.404 70.902 -42.276Q74.334 -44.148 78.93599999999999 -44.148ZM74.958 -32.526Q70.97999999999999 -32.526 68.21099999999998 -29.64Q65.442 -26.754 65.442 -21.762Q65.442 -16.77 68.21099999999998 -13.884Q70.97999999999999 -10.998 74.958 -10.998Q78.93599999999999 -10.998 81.744 -13.922999999999998Q84.55199999999999 -16.848 84.55199999999999 -21.84Q84.55199999999999 -26.832 81.78299999999999 -29.679000000000002Q79.014 -32.526 74.958 -32.526Z M143.598 -18.564H113.412Q113.724 -14.508 116.025 -12.363Q118.32600000000001 -10.218 121.68 -10.218Q126.672 -10.218 128.622 -14.43H142.818Q141.726 -10.14 138.87900000000002 -6.708Q136.032 -3.276 131.74200000000002 -1.3259999999999998Q127.452 0.624 122.148 0.624Q115.75200000000001 0.624 110.76 -2.1060000000000003Q105.768 -4.836 102.96000000000001 -9.905999999999999Q100.152 -14.975999999999999 100.152 -21.762Q100.152 -28.548 102.92099999999999 -33.618Q105.69 -38.688 110.682 -41.418000000000006Q115.674 -44.148 122.148 -44.148Q128.466 -44.148 133.38 -41.496Q138.294 -38.844 141.063 -33.93Q143.832 -29.016 143.832 -22.464Q143.832 -20.592 143.598 -18.564ZM130.18200000000002 -25.974Q130.18200000000002 -29.406 127.84200000000001 -31.434Q125.50200000000001 -33.462 121.992 -33.462Q118.638 -33.462 116.337 -31.512Q114.036 -29.562 113.49000000000001 -25.974Z M189.30599999999998 -18.564H159.11999999999998Q159.432 -14.508 161.733 -12.363Q164.034 -10.218 167.38799999999998 -10.218Q172.38 -10.218 174.32999999999998 -14.43H188.52599999999998Q187.434 -10.14 184.587 -6.708Q181.73999999999998 -3.276 177.45 -1.3259999999999998Q173.16 0.624 167.856 0.624Q161.45999999999998 0.624 156.468 -2.1060000000000003Q151.476 -4.836 148.668 -9.905999999999999Q145.85999999999999 -14.975999999999999 145.85999999999999 -21.762Q145.85999999999999 -28.548 148.629 -33.618Q151.398 -38.688 156.39 -41.418000000000006Q161.38199999999998 -44.148 167.856 -44.148Q174.17399999999998 -44.148 179.08799999999997 -41.496Q184.00199999999998 -38.844 186.771 -33.93Q189.54 -29.016 189.54 -22.464Q189.54 -20.592 189.30599999999998 -18.564ZM175.89 -25.974Q175.89 -29.406 173.54999999999998 -31.434Q171.20999999999998 -33.462 167.7 -33.462Q164.346 -33.462 162.04500000000002 -31.512Q159.744 -29.562 159.19799999999998 -25.974Z M221.208 -43.992V-29.874H217.54199999999997Q212.54999999999998 -29.874 210.05399999999997 -27.729Q207.558 -25.584 207.558 -20.202V0.0H194.22V-43.524H207.558V-36.27Q209.898 -39.858 213.408 -41.925Q216.91799999999998 -43.992 221.208 -43.992Z" style="fill:var(--word,#0B2E47)"/>
+</symbol>
+<symbol id="o-sym" viewBox="0 0 100 100"><path d="M98.0 48.8 97.6 44.1 97.2 41.2 96.8 39.2 95.6 34.9 94.7 32.5 93.5 29.7 92.6 27.9 91.2 25.3 88.7 21.6 86.0 18.2 82.7 14.8 80.7 13.1 78.8 11.6 75.2 9.1 71.3 7.0 67.0 5.1 62.5 3.7 60.2 3.1 57.6 2.6 53.2 2.1 48.8 2.0 44.1 2.4 41.2 2.8 39.2 3.2 34.9 4.4 32.5 5.3 29.7 6.5 27.9 7.4 25.3 8.8 21.6 11.3 18.2 14.0 14.8 17.3 13.1 19.3 11.6 21.2 9.1 24.8 7.0 28.7 5.1 33.0 3.7 37.5 3.1 39.8 2.6 42.4 2.1 46.8 2.0 51.2 2.4 55.9 2.8 58.8 3.2 60.8 4.4 65.1 5.3 67.5 6.5 70.3 7.4 72.1 8.8 74.7 11.3 78.4 14.0 81.8 17.3 85.2 19.3 86.9 21.2 88.4 24.8 90.9 28.7 93.0 33.0 94.9 37.5 96.3 39.8 96.9 42.4 97.4 46.8 97.9 51.2 98.0 55.9 97.6 58.8 97.2 60.8 96.8 65.1 95.6 67.5 94.7 70.3 93.5 72.1 92.6 74.7 91.2 78.4 88.7 81.8 86.0 85.2 82.7 86.9 80.7 88.4 78.8 90.9 75.2 93.0 71.3 94.9 67.0 96.3 62.5 96.9 60.2 97.4 57.6 97.9 53.2 98.0 48.8ZM84.7 41.8 84.7 43.3 84.4 45.5 83.7 48.8 82.7 51.7 81.8 53.6 80.9 55.1 80.0 56.6 78.8 58.2 76.6 60.5 75.1 61.8 73.6 63.0 72.1 64.0 70.6 64.8 71.0 62.3 71.3 59.2 71.2 56.5 71.0 54.1 72.0 53.0 73.0 51.7 73.9 50.4 74.6 49.0 75.2 47.5 75.7 45.9 76.2 43.1 76.2 41.5 76.2 40.2 75.8 37.7 75.4 36.1 74.9 34.8 73.6 32.2 72.5 30.7 71.4 29.4 70.0 28.0 68.7 27.0 67.0 25.9 65.2 25.1 63.9 24.6 61.6 24.0 59.8 23.8 57.9 23.8 55.8 24.0 54.1 24.3 52.1 24.9 50.7 25.6 49.2 26.4 47.6 27.5 45.9 29.0 44.3 30.9 43.2 32.5 42.0 34.9 41.3 37.1 40.9 39.2 40.7 41.0 40.9 43.8 41.1 45.3 41.6 46.9 42.5 49.3 44.0 51.7 45.0 53.0 45.9 54.1 47.0 55.0 48.3 56.0 50.5 57.4 53.1 58.4 54.7 58.9 55.7 59.0 55.8 59.1 55.5 61.2 55.0 63.0 54.0 65.4 52.8 67.2 50.7 66.6 48.4 65.8 46.1 64.7 44.3 63.6 42.5 62.3 40.4 60.5 39.1 59.3 37.7 57.5 36.5 55.8 35.3 53.9 34.2 51.6 33.5 49.6 32.9 47.3 32.5 45.0 32.3 43.1 32.2 40.9 32.4 38.5 32.9 35.8 33.5 33.5 34.4 31.0 35.3 29.1 37.0 26.4 38.5 24.5 40.4 22.5 42.5 20.7 44.3 19.4 47.0 17.9 49.0 17.0 51.6 16.2 54.2 15.6 56.7 15.3 59.1 15.3 61.4 15.4 64.2 15.9 66.6 16.5 69.0 17.4 71.4 18.7 73.6 20.1 75.5 21.5 77.5 23.4 79.2 25.4 80.6 27.3 82.1 30.0 83.0 32.1 83.8 34.7 84.4 37.2 84.7 39.7 84.7 41.8ZM47.4 32.9 50.0 33.7 52.3 34.5 53.9 35.3 56.6 37.0 58.5 38.5 60.5 40.4 62.4 42.6 64.0 44.9 65.2 47.1 66.2 49.5 66.9 51.6 67.4 54.2 67.7 56.9 67.8 59.1 67.6 61.5 67.1 64.2 66.5 66.5 65.6 69.0 64.7 70.9 63.0 73.6 61.5 75.5 59.6 77.5 57.5 79.3 55.7 80.6 53.0 82.1 51.0 83.0 48.4 83.8 45.8 84.4 43.3 84.7 40.9 84.7 38.6 84.6 35.8 84.1 33.4 83.5 31.0 82.5 28.6 81.3 26.4 80.0 24.5 78.5 22.5 76.6 20.8 74.6 19.4 72.7 17.9 70.0 17.0 67.9 16.2 65.3 15.6 62.8 15.3 60.3 15.3 57.8 15.4 55.6 15.9 52.7 16.7 50.0 17.8 47.3 19.1 44.9 20.7 42.5 22.5 40.4 24.9 38.2 27.2 36.5 29.4 35.2 29.0 37.7 28.7 40.8 28.8 43.5 29.1 45.9 28.0 47.0 27.0 48.3 25.6 50.7 24.6 53.1 24.2 54.7 23.9 56.5 23.8 59.0 24.1 61.8 24.8 64.5 25.4 66.0 26.1 67.3 27.3 69.2 28.4 70.4 29.6 71.6 30.9 72.7 32.5 73.8 34.0 74.6 35.5 75.2 37.1 75.7 38.8 76.0 40.5 76.2 42.5 76.2 44.2 76.0 45.9 75.7 47.9 75.0 49.3 74.4 50.8 73.6 52.8 72.2 54.7 70.4 56.0 68.7 57.4 66.5 58.2 64.5 58.9 62.3 59.2 59.8 59.2 57.2 59.1 55.8 58.7 54.1 57.8 51.4 57.1 50.0 56.3 48.7 55.5 47.6 54.5 46.4 52.4 44.5 50.0 42.9 48.6 42.2 46.9 41.6 45.3 41.1 44.3 41.0 44.2 40.9 44.5 38.6 45.2 36.2 46.0 34.6 46.7 33.5 47.2 32.9 47.4 32.9ZM53.5 50.0 53.4 50.8 53.2 51.4 52.9 52.0 52.4 52.5 52.0 52.9 51.3 53.3 50.6 53.5 49.8 53.5 49.1 53.4 48.5 53.1 47.9 52.8 47.4 52.3 47.0 51.7 46.7 51.2 46.5 50.6 46.5 49.8 46.6 49.1 46.9 48.5 47.2 47.9 47.7 47.4 48.3 47.0 48.8 46.7 49.4 46.5 50.2 46.5 50.9 46.6 51.5 46.9 52.5 47.6 52.9 48.0 53.3 48.7 53.5 49.4 53.5 50.0Z" fill-rule="evenodd" fill="currentColor"/></symbol>
+</svg>
+<header class="top"><div class="wrap">
+<a class="brand" href="/" aria-label="Opeer, início"><svg class="" viewBox="0 0 338 104" role="img" aria-label="Opeer" style="--sym:#009FD1;--word:#0B2E47"><use href="#o-logo"/></svg></a>
+<nav aria-label="Principal"><a href="#como">Como funciona</a><a href="#funcoes">Funções</a><a href="#pagamento">Pagamento</a><a href="#duvidas">Dúvidas</a><a href="/freela/">Sou freela</a></nav>
+<div class="act"><a class="btn btn-primary btn-sm" href="#acesso">Pedir acesso</a><details class="menu"><summary aria-label="Abrir menu"><span></span></summary><div class="drop"><a href="#como">Como funciona</a><a href="#funcoes">Funções</a><a href="#pagamento">Pagamento</a><a href="#duvidas">Dúvidas</a><a href="/freela/">Sou freela</a></div></details></div>
+</div></header>
+<main>
+<section class="hero hero-emp">
+  <svg class="hero-ring" viewBox="0 0 100 100" aria-hidden="true" style="color:currentColor"><use href="#o-sym"/></svg>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="tag"><i><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5V20h16V9.5"/><path d="M3 9.5L5 4h14l2 5.5c0 1.4-1.1 2.5-2.5 2.5S16 10.9 16 9.5c0 1.4-1.1 2.5-2.5 2.5h-3C9.1 12 8 10.9 8 9.5 8 10.9 6.9 12 5.5 12S3 10.9 3 9.5z"/><path d="M10 20v-5h4v5"/></svg></i>Para donos e gerentes de bares, restaurantes e eventos</span>
+      <h1>Faltou gente? <em>Abre um turno</em> e escolhe quem vai.</h1>
+      <p class="lead">Profissionais verificados de salão, cozinha e bar pra cobrir o turno de hoje. Sem vínculo, com suporte de gente de verdade e tudo pago numa fatura com nota.</p>
+      <div class="btns"><a class="btn btn-primary btn-lg" href="#acesso">Pedir acesso <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-ghost btn-lg" href="#como">Ver como funciona</a></div>
+      <div class="hero-proof"><span><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.7 2.7L16 9.6"/></svg>Profissionais verificados</span><span><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.7 2.7L16 9.6"/></svg>Sem vínculo</span><span><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.7 2.7L16 9.6"/></svg>Fatura com nota fiscal</span></div>
+    </div>
+    <div class="cand-wrap">
+      <div class="panel" aria-label="Exemplo do painel de candidatos">
+        <div class="panel-h"><b><span class="dot"></span>Candidatos</b><time id="picked">1 de 2 escolhidos</time></div>
+        <div class="shift"><div><small>Função</small><b>Cumim</b></div><div><small>Quando</small><b>Hoje</b></div><div><small>Horário</small><b>18:00 – 00:00</b></div><div><small>Pessoas</small><b>2</b></div></div>
+        <div class="cands" id="cands"><div class="cand"><span class="avatar">MS</span><div class="nm"><b>Marcos S.</b><span><em>★ 4,9</em><span>41 turnos</span><span class="z">0 faltas</span></span></div><button type="button" class="pick" aria-pressed="true">Escolhido</button></div><div class="cand"><span class="avatar">BP</span><div class="nm"><b>Bianca P.</b><span><em>★ 4,8</em><span>27 turnos</span><span class="z">0 faltas</span></span></div><button type="button" class="pick" aria-pressed="false">Escolher</button></div><div class="cand"><span class="avatar">RL</span><div class="nm"><b>Rafael L.</b><span><em>★ 4,7</em><span>63 turnos</span><span>1 falta</span></span></div><button type="button" class="pick" aria-pressed="false">Escolher</button></div><div class="cand"><span class="avatar">JC</span><div class="nm"><b>Juliana C.</b><span><em style="color:var(--cyan-deep)">Nova</em><span>Nova na Opeer</span><span class="z">Verificada</span></span></div><button type="button" class="pick" aria-pressed="false">Escolher</button></div></div>
+      </div>
+      <div class="cand-foot"><div class="float"><span class="ic"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0116 0v2"/><rect x="3" y="13" width="4" height="6" rx="1.5"/><rect x="17" y="13" width="4" height="6" rx="1.5"/><path d="M19 19c0 1.5-2 2.5-5 2.5"/></svg></span><div><b>Suporte em campo</b><span>Gente do nosso time pra ajudar quando precisar</span></div></div>
+      <p class="caption">Exemplo ilustrativo do app</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">O que muda</span><h2>Chega de resolver turno no improviso</h2><p class="lead">O jeito de cobrir uma falta hoje funciona até o dia em que não funciona. Com a Opeer, cada turno tem processo, histórico e nota.</p></div>
+    <div class="cmp"><div class="cmp-row cmp-head"><div class="k"></div><div class="old">Hoje é assim</div><div class="new">Com a Opeer</div></div><div class="cmp-row"><div class="k">Achar gente</div><div class="old"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg><span>Grupo de WhatsApp e indicação de última hora</span></div><div class="new"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Turno aberto no app e candidatos da região</span></div></div><div class="cmp-row"><div class="k">Saber quem é</div><div class="old"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg><span>Você não conhece o histórico de quem vem</span></div><div class="new"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Nota, turnos feitos e faltas em cada perfil</span></div></div><div class="cmp-row"><div class="k">Quando dá problema</div><div class="old"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg><span>Você corre atrás sozinho</span></div><div class="new"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Suporte em campo pra ajudar a resolver</span></div></div><div class="cmp-row"><div class="k">Pagamento</div><div class="old"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg><span>Dinheiro vivo ou Pix por fora, um por um</span></div><div class="new"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Uma fatura com nota fiscal</span></div></div><div class="cmp-row"><div class="k">Formalidade</div><div class="old"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg><span>Informal, sem registro do que foi combinado</span></div><div class="new"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg><span>Cada turno intermediado, com termo e nota</span></div></div></div>
+  </div>
+</section>
+
+<section class="tint" id="como">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Como funciona</span><h2>Quatro passos, do turno aberto à nota</h2></div>
+    <div class="steps">
+      <div class="step"><h3>Abra o turno</h3><p>Escolha a função no catálogo e defina horário, quantas pessoas, valor e exigências.</p></div>
+      <div class="step"><h3>Receba candidatos</h3><p>Profissionais verificados da região se candidatam. Cada perfil mostra nota, turnos feitos e faltas.</p></div>
+      <div class="step"><h3>Escolha quem vai</h3><p>Você decide. Pode também chamar um profissional que já conhece pra fazer o turno pela Opeer.</p></div>
+      <div class="step"><h3>Turno feito</h3><p>O profissional faz check-in no app, você avalia o turno e recebe tudo numa fatura com nota.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="funcoes">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Catálogo de funções</span><h2>Do salão à pia, do bar ao evento</h2><p class="lead">O catálogo cresce junto com a operação. Não achou a função que você precisa? Fale com a gente no formulário.</p></div>
+    <div class="catalog"><div class="cat"><div class="cat-h"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h10l-1 7a4 4 0 01-8 0L7 3z"/><path d="M12 14v7M8.5 21h7"/></svg><b>Salão</b></div><ul><li>Cumim</li><li>Garçom</li><li>Maître</li><li>Recepção</li><li>Caixa</li><li>Atendente de balcão</li><li>Runner</li></ul></div><div class="cat"><div class="cat-h"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 14v6h10v-6"/><path d="M7 14a4 4 0 01-1.3-7.8A4.5 4.5 0 0112 4a4.5 4.5 0 016.3 2.2A4 4 0 0117 14H7z"/><path d="M7 17h10"/></svg><b>Cozinha</b></div><ul><li>Ajudante de cozinha</li><li>Cozinheiro</li><li>Chapeiro</li><li>Pizzaiolo</li><li>Sushiman</li><li>Confeiteiro</li><li>Pia</li></ul></div><div class="cat"><div class="cat-h"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h10l-1 7a4 4 0 01-8 0L7 3z"/><path d="M12 14v7M8.5 21h7"/></svg><b>Bar</b></div><ul><li>Bartender</li><li>Barback</li><li>Barista</li><li>Copeiro</li></ul></div><div class="cat"><div class="cat-h"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.5-12 7.5 7.5L4 20z"/><path d="M14 4.5c.6 1 .6 2.2 0 3.2M19.5 10c-1-.6-2.2-.6-3.2 0M17 3.5l.5 1.5M20.5 6.5l-1.5.5"/></svg><b>Eventos</b></div><ul><li>Garçom de evento</li><li>Recepção de evento</li><li>Apoio de montagem</li><li>Copa de evento</li></ul></div><div class="cat"><div class="cat-h"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5V20h16V9.5"/><path d="M3 9.5L5 4h14l2 5.5c0 1.4-1.1 2.5-2.5 2.5S16 10.9 16 9.5c0 1.4-1.1 2.5-2.5 2.5h-3C9.1 12 8 10.9 8 9.5 8 10.9 6.9 12 5.5 12S3 10.9 3 9.5z"/><path d="M10 20v-5h4v5"/></svg><b>Apoio</b></div><ul><li>Serviços gerais</li><li>Estoquista</li><li>Expedição</li><li>Auxiliar de limpeza</li></ul></div></div>
+  </div>
+</section>
+
+<section class="tint">
+  <div class="wrap split-2">
+    <div style="display:grid;gap:22px">
+      <div class="sec-head" style="margin:0"><span class="eyebrow">Você no controle</span><h2>A casa decide tudo sobre o turno</h2></div>
+      <ul class="checks">
+        <li><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.7 2.7L16 9.6"/></svg><div><b>Valor, horário e exigências</b><span>Você define quanto paga e o que pede de cada profissional.</span></div></li>
+        <li><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.7 2.7L16 9.6"/></svg><div><b>Você escolhe quem vai</b><span>Compare nota, turnos feitos e faltas antes de escolher.</span></div></li>
+        <li><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.7 2.7L16 9.6"/></svg><div><b>Favoritos</b><span>Salve quem foi bem e chame de novo nos próximos turnos.</span></div></li>
+        <li><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.7 2.7L16 9.6"/></svg><div><b>Traga quem você já conhece</b><span>Indique o profissional e ele faz o turno pela Opeer, com termo, Pix e nota.</span></div></li>
+        <li><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.7 2.7L16 9.6"/></svg><div><b>Check-in no app</b><span>O profissional registra a chegada. Se esquecer, você confirma por ele.</span></div></li>
+      </ul>
+    </div>
+    <div>
+      <div class="panel form-mock" aria-label="Exemplo de turno sendo aberto">
+        <div class="panel-h"><b>Novo turno</b><span class="chip open">Rascunho</span></div>
+        <div class="fm">
+          <div class="fm-row"><small>Função</small><b>Ajudante de cozinha</b></div>
+          <div class="fm-row"><small>Quando</small><b>Sábado</b></div>
+          <div class="fm-row"><small>Horário</small><b>17:00 – 23:00</b></div>
+          <div class="fm-row"><small>Pessoas</small><b>2</b></div>
+          <div class="fm-row"><small>Valor do turno</small><b>R$ 120,00</b></div>
+          <div class="fm-row"><small>Exigências</small><div class="fm-tags"><span>Experiência em cozinha</span><span>Roupa preta</span></div></div>
+        </div>
+        <div class="fm-foot"><span class="small">Turno visível pra profissionais da região</span><span class="btn btn-primary btn-sm" aria-hidden="true">Publicar turno</span></div>
+      </div>
+      <p class="caption">Exemplo ilustrativo. Cada casa define o valor do turno.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <svg class="band-ring" viewBox="0 0 100 100" aria-hidden="true" style="color:currentColor"><use href="#o-sym"/></svg>
+  <div class="wrap band-grid">
+    <div style="display:grid;gap:18px">
+      <span class="eyebrow">Suporte em campo</span>
+      <h2>Quando dá problema, quem resolve é gente</h2>
+      <p class="lead">A Opeer nasce dentro do Grupo Hashtag, que já opera todos os dias dentro de centenas de restaurantes. O nosso time de suporte circula nas lojas e atende quem precisa, sem você ficar falando com robô.</p>
+    </div>
+    <div>
+      <div class="nums">
+        <div><b>+600</b><small>lojas parceiras do grupo</small></div>
+        <div><b>+600 mil</b><small>entregas por mês</small></div>
+        <div><b>Todo dia</b><small>suporte circulando nas lojas</small></div>
+        <div><b>Milhares</b><small>de diárias pagas no Pix</small></div>
+      </div>
+      <p class="note">Números do Grupo Hashtag. Os números da Opeer entram aqui conforme a operação roda.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pagamento">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Pagamento e nota</span><h2>Você paga uma fatura. A Opeer paga cada profissional.</h2></div>
+    <div class="pay">
+      <div><span class="big">1 fatura</span><h3>Com nota fiscal</h3><p>Os turnos do período chegam numa fatura só, no CNPJ da casa. Sem dinheiro vivo e sem Pix avulso pra cada freela.</p></div>
+      <div><span class="big">11h</span><h3>Pra registrar ocorrência</h3><p>Você tem até as 11h do dia seguinte ao turno pra registrar falta ou ocorrência. Se o profissional trabalhou menos, você decide se paga o turno inteiro ou só as horas feitas.</p></div>
+      <div><span class="big">Pix</span><h3>Pro profissional, pela Opeer</h3><p>A Opeer paga o profissional no Pix no dia seguinte, com termo do turno registrado. Nada fica por fora.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="tint" id="acesso">
+  <div class="wrap acc">
+    <div class="acc-copy">
+      <span class="eyebrow">Pedir acesso</span>
+      <h2>Comece a abrir turnos na Opeer</h2>
+      <p class="lead">O acesso é liberado por convite, começando pelas casas que já são clientes do Grupo Hashtag. Deixe seus dados e o nosso time te chama no WhatsApp.</p>
+      <ul class="checks">
+        <li><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.7 2.7L16 9.6"/></svg><div><b>Apresentação sem compromisso</b><span>A gente apresenta a plataforma e tira suas dúvidas.</span></div></li>
+        <li><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.7 2.7L16 9.6"/></svg><div><b>Acesso criado pelo nosso time</b><span>Seu painel já vem pronto pra abrir o primeiro turno.</span></div></li>
+      </ul>
+    </div>
+    <form class="lead-form" id="leadForm" novalidate>
+      <div id="formBody" style="display:grid;gap:18px">
+        <div class="fgrid">
+          <div class="fld"><label for="f-nome">Seu nome</label><input id="f-nome" name="nome" autocomplete="name" required placeholder="Como podemos te chamar"><span class="err">Informe seu nome.</span></div>
+          <div class="fld"><label for="f-whats">WhatsApp</label><input id="f-whats" name="whatsapp" inputmode="tel" autocomplete="tel" required placeholder="(00) 00000-0000"><span class="err">Informe um WhatsApp com DDD.</span></div>
+          <div class="fld"><label for="f-casa">Nome do estabelecimento</label><input id="f-casa" name="estabelecimento" required placeholder="Ex.: Bar do Centro"><span class="err">Informe o nome do estabelecimento.</span></div>
+          <div class="fld"><label for="f-cargo">Seu cargo</label><select id="f-cargo" name="cargo" required><option value="">Selecione</option><option>Dono ou sócio</option><option>Gerente</option><option>RH ou administrativo</option><option>Outro</option></select><span class="err">Selecione seu cargo.</span></div>
+          <div class="fld"><label for="f-tipo">Tipo de negócio</label><select id="f-tipo" name="tipo" required><option value="">Selecione</option><option>Bar</option><option>Restaurante</option><option>Fast food</option><option>Padaria ou café</option><option>Buffet</option><option>Eventos</option><option>Outro</option></select><span class="err">Selecione o tipo de negócio.</span></div>
+          <div class="fld"><label for="f-cidade">Cidade</label><input id="f-cidade" name="cidade" autocomplete="address-level2" required placeholder="Sua cidade"><span class="err">Informe a cidade.</span></div>
+          <div class="fld full"><label for="f-vol">Quantos turnos extras você precisa por semana?</label><select id="f-vol" name="turnos_semana" required><option value="">Selecione</option><option>1 a 5</option><option>6 a 15</option><option>16 a 40</option><option>Mais de 40</option><option>Ainda não sei</option></select><span class="err">Selecione uma opção.</span></div>
+          <div class="fld full"><span class="lbl" id="fn-lbl">Quais funções mais faltam? <span class="small" style="font-weight:500">(opcional)</span></span><div class="picks" role="group" aria-labelledby="fn-lbl"><label><input type="checkbox" name="funcoes" value="Cumim" id="fn-0"><span>Cumim</span></label><label><input type="checkbox" name="funcoes" value="Garçom" id="fn-1"><span>Garçom</span></label><label><input type="checkbox" name="funcoes" value="Ajudante de cozinha" id="fn-2"><span>Ajudante de cozinha</span></label><label><input type="checkbox" name="funcoes" value="Pia" id="fn-3"><span>Pia</span></label><label><input type="checkbox" name="funcoes" value="Atendente" id="fn-4"><span>Atendente</span></label><label><input type="checkbox" name="funcoes" value="Serviços gerais" id="fn-5"><span>Serviços gerais</span></label><label><input type="checkbox" name="funcoes" value="Bar" id="fn-6"><span>Bar</span></label><label><input type="checkbox" name="funcoes" value="Cozinheiro" id="fn-7"><span>Cozinheiro</span></label><label><input type="checkbox" name="funcoes" value="Caixa" id="fn-8"><span>Caixa</span></label><label><input type="checkbox" name="funcoes" value="Eventos" id="fn-9"><span>Eventos</span></label><label><input type="checkbox" name="funcoes" value="Outra" id="fn-10"><span>Outra</span></label></div></div>
+        </div>
+        <label class="consent" id="consentWrap"><input type="checkbox" id="f-ok" name="consentimento"><span>Aceito que a Opeer entre em contato pelo WhatsApp sobre este pedido.</span></label>
+        <div id="formMsg" class="form-msg" hidden></div>
+        <button class="btn btn-primary btn-lg" type="submit" id="f-send">Pedir acesso <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+      <div class="done-box" id="formDone" hidden>
+        <span class="ic"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span>
+        <h3 style="font-size:1.4rem">Pedido recebido</h3>
+        <p class="muted">Obrigado. O nosso time vai te chamar no WhatsApp informado pra liberar o seu acesso.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section id="duvidas">
+  <div class="wrap">
+    <div class="sec-head center"><span class="eyebrow">Dúvidas</span><h2>Perguntas de quem tem casa</h2></div>
+    <div class="faq-list">
+      <details><summary>Quanto custa?</summary><p>Você define o valor de cada turno e paga, junto com ele, a taxa da Opeer, tudo numa fatura com nota fiscal. No contato a gente mostra os valores pro seu tipo de operação.</p></details>
+      <details><summary>E se o profissional faltar ou sair mais cedo?</summary><p>Você registra no app até as 11h do dia seguinte ao turno. Se ele trabalhou menos que o combinado, você decide se paga o turno inteiro ou só as horas feitas. E o nosso suporte ajuda a buscar outra pessoa sempre que possível.</p></details>
+      <details><summary>Posso chamar alguém que eu já conheço?</summary><p>Pode. Indique o profissional e ele faz o turno pela Opeer, com termo, Pix e nota. Fica mais seguro pra você e pra ele.</p></details>
+      <details><summary>Isso gera vínculo empregatício?</summary><p>A Opeer intermedeia cada turno de forma avulsa, com termo, pagamento pela plataforma e nota fiscal. O profissional escolhe quando e onde trabalha e a casa não paga ninguém por fora.</p></details>
+      <details><summary>Preciso exigir MEI dos profissionais?</summary><p>Não. A segurança vem da intermediação da Opeer: termo de cada turno, pagamento pela plataforma e nota fiscal.</p></details>
+      <details><summary>Como os profissionais são verificados?</summary><p>Todo profissional passa por cadastro e verificação antes do primeiro turno. Depois disso, cada turno feito alimenta o histórico com nota, turnos e faltas.</p></details>
+      <details><summary>Funciona na minha cidade?</summary><p>Estamos começando e abrindo novas regiões conforme a base cresce. Preencha o formulário que a gente te diz.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="foot"><div class="wrap">
+<div class="foot-grid">
+  <div><a class="brand" href="/" aria-label="Opeer"><svg class="" viewBox="0 0 338 104" role="img" aria-label="Opeer" style="--sym:#009FD1;--word:#0B2E47"><use href="#o-logo"/></svg></a><p class="small" style="max-width:34ch">Turnos avulsos pra bares, restaurantes e eventos, com profissionais verificados e suporte de gente de verdade.</p></div>
+  <div><h4>Empresas</h4><a href="/empresas/">Opeer para empresas</a><a href="/empresas/#como">Como funciona</a><a href="/empresas/#acesso">Pedir acesso</a></div>
+  <div><h4>Freelas</h4><a href="/freela/">Opeer para freelas</a><a href="https://wa.me/5585992775674?text=Oi!%20Vim%20pelo%20site%20e%20quero%20fazer%20turnos" target="_blank" rel="noopener">Cadastro no WhatsApp</a><a href="/freela/#duvidas">Dúvidas</a></div>
+  <div><h4>Siga</h4><a href="https://instagram.com/opeer.app" target="_blank" rel="noopener">@opeer.app</a><a href="https://instagram.com/opeer.freela" target="_blank" rel="noopener">@opeer.freela</a><a href="/#sobre">Sobre a Opeer</a></div>
+</div>
+<div class="bottom"><span>© 2026 Opeer · Uma empresa do Grupo Hashtag</span><span><a href="#" style="font-size:13px">Termos de uso</a> · <a href="#" style="font-size:13px">Privacidade</a></span></div>
+</div></footer>
+<script>
+
+// Para onde vão os pedidos de acesso. Quando o site estiver no domínio, cole aqui a URL do webhook do CRM
+// (Kommo, Supabase, etc.). O formulário envia um POST com JSON. Vazio = página de pré-visualização.
+var FORM_ENDPOINT = "https://wzlcbktmgvgezodhjxmy.supabase.co/functions/v1/opeer-lead";
+
+(function(){
+  // candidatos: botão escolher
+  var picked = document.getElementById('picked');
+  document.querySelectorAll('#cands .pick').forEach(function(b){
+    b.addEventListener('click', function(){
+      var on = b.getAttribute('aria-pressed') !== 'true';
+      var count = document.querySelectorAll('#cands .pick[aria-pressed="true"]').length;
+      if (on && count >= 2) return;
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.textContent = on ? 'Escolhido' : 'Escolher';
+      var n = document.querySelectorAll('#cands .pick[aria-pressed="true"]').length;
+      picked.textContent = n + ' de 2 escolhidos';
+    });
+  });
+
+  // máscara do WhatsApp
+  var w = document.getElementById('f-whats');
+  w.addEventListener('input', function(){
+    var d = w.value.replace(/\D/g,'').slice(0,11);
+    var o = d;
+    if (d.length > 2) o = '(' + d.slice(0,2) + ') ' + d.slice(2);
+    if (d.length > 7) o = '(' + d.slice(0,2) + ') ' + d.slice(2, d.length-4) + '-' + d.slice(-4);
+    w.value = o;
+  });
+
+  var form = document.getElementById('leadForm');
+  var msg = document.getElementById('formMsg');
+  var send = document.getElementById('f-send');
+  function show(kind, text){ msg.className = 'form-msg ' + kind; msg.textContent = text; msg.hidden = false; }
+
+  form.addEventListener('input', function(e){
+    var f = e.target.closest('.fld'); if (f) f.classList.remove('bad');
+    if (e.target.id === 'f-ok') document.getElementById('consentWrap').classList.remove('bad');
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    msg.hidden = true;
+    var ok = true;
+    form.querySelectorAll('[required]').forEach(function(el){
+      var v = el.value.trim();
+      var bad = !v || (el.id === 'f-whats' && v.replace(/\D/g,'').length < 10);
+      el.closest('.fld').classList.toggle('bad', bad);
+      if (bad && ok) { el.focus(); ok = false; }
+    });
+    var c = document.getElementById('f-ok');
+    if (!c.checked) { document.getElementById('consentWrap').classList.add('bad'); if (ok) c.focus(); ok = false; }
+    if (!ok) { show('err', 'Confira os campos destacados.'); return; }
+
+    var data = {
+      origem: 'site-empresas',
+      enviado_em: new Date().toISOString(),
+      nome: form.nome.value.trim(),
+      whatsapp: form.whatsapp.value.replace(/\D/g,''),
+      estabelecimento: form.estabelecimento.value.trim(),
+      cargo: form.cargo.value,
+      tipo: form.tipo.value,
+      cidade: form.cidade.value.trim(),
+      turnos_semana: form.turnos_semana.value,
+      funcoes: Array.prototype.map.call(form.querySelectorAll('input[name="funcoes"]:checked'), function(i){ return i.value; })
+    };
+
+    if (!FORM_ENDPOINT) {
+      show('warn', 'Página de pré-visualização: o envio ainda não está ligado ao CRM, então este pedido não foi enviado.');
+      return;
+    }
+    send.disabled = true; send.style.opacity = .7;
+    fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+      .then(function(r){ if (!r.ok) throw new Error(r.status); document.getElementById('formBody').hidden = true; document.getElementById('formDone').hidden = false; })
+      .catch(function(){ show('err', 'Não conseguimos enviar agora. Confira sua conexão e tente de novo.'); })
+      .then(function(){ send.disabled = false; send.style.opacity = 1; });
+  });
+})();
+
+</script>
+</body></html>

@@ -1,0 +1,481 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta property="og:title" content="Opeer"><meta property="og:description" content="Turnos avulsos para bares, restaurantes e eventos. Gente verificada, Pix no dia seguinte, suporte de verdade."><meta property="og:image" content="https://opeer.com.br/og.png"><meta property="og:type" content="website"><style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Opeer</title>
+<meta name="description" content="Opeer: turnos avulsos para bares, restaurantes e eventos.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: site claro da marca. Seções alternam branco e névoa, com uma faixa navy (suporte) e uma faixa cyan (chamada final). Peças de produto (quadro de turnos, painel de candidatos, celular do freela) fazem o papel de foto. */
+:root {
+  --cyan: #009FD1;
+  --cyan-deep: #0078A8;
+  --cyan-soft: #E6F4FB;
+  --navy: #0B2E47;
+  --navy-2: #12405F;
+  --ink: #14202B;
+  --grey: #5C6B78;
+  --mist: #F4F7F9;
+  --line: #E1E9EE;
+  --white: #FFFFFF;
+  --ok: #0E9F6E;
+  --ok-soft: #E3F6EE;
+  --amber: #A86A10;
+  --amber-soft: #FDF2DF;
+  --f-display: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-body: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --r: 14px;
+  --shadow: 0 1px 2px rgba(11,46,71,.06), 0 12px 32px -12px rgba(11,46,71,.18);
+  color-scheme: light;
+}
+html { scroll-behavior: smooth; background: var(--white); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+body { background: var(--white); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+* { box-sizing: border-box; }
+h1, h2, h3, h4 { font-family: var(--f-display); color: var(--navy); margin: 0; text-wrap: balance; line-height: 1.12; }
+p { margin: 0; }
+a { color: inherit; }
+ul { margin: 0; padding: 0; list-style: none; }
+.wrap { max-width: 1160px; margin-inline: auto; padding-inline: clamp(16px, 4vw, 32px); }
+section { padding-block: clamp(56px, 8vw, 104px); }
+.tint { background: var(--mist); }
+:focus-visible { outline: 3px solid var(--cyan); outline-offset: 2px; border-radius: 6px; }
+
+/* type */
+.eyebrow { font-family: var(--f-body); font-size: 12.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--cyan-deep); }
+h1 { font-size: clamp(2.35rem, 5.4vw, 4.2rem); font-weight: 700; letter-spacing: -.035em; line-height: 1.04; }
+h1 em, h2 em { font-style: normal; color: var(--cyan); }
+h2 { font-size: clamp(1.8rem, 3.4vw, 2.65rem); font-weight: 700; letter-spacing: -.028em; }
+h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; }
+.lead { font-size: clamp(1.05rem, 1.5vw, 1.2rem); color: var(--grey); max-width: 58ch; }
+.muted { color: var(--grey); }
+.small { font-size: 13px; color: var(--grey); }
+.sec-head { display: grid; gap: 14px; max-width: 720px; margin-bottom: clamp(32px, 5vw, 56px); }
+.sec-head.center { margin-inline: auto; text-align: center; justify-items: center; }
+
+/* buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: var(--f-display); font-weight: 600; font-size: 15.5px; padding: 14px 22px; border-radius: 12px; text-decoration: none; border: 1.5px solid transparent; cursor: pointer; transition: transform .15s ease, background .15s ease, box-shadow .15s ease; white-space: nowrap; }
+.btn:hover { transform: translateY(-1px); }
+.btn svg { width: 18px; height: 18px; flex: none; }
+.btn-primary { background: var(--cyan); color: var(--white); box-shadow: 0 8px 20px -8px rgba(0,159,209,.7); }
+.btn-primary:hover { background: var(--cyan-deep); }
+.btn-navy { background: var(--navy); color: var(--white); }
+.btn-navy:hover { background: var(--navy-2); }
+.btn-ghost { background: var(--white); color: var(--navy); border-color: var(--line); }
+.btn-ghost:hover { border-color: var(--cyan); color: var(--cyan-deep); }
+.btn-white { background: var(--white); color: var(--navy); }
+.btn-wa { background: #1FAF53; color: var(--white); box-shadow: 0 8px 20px -8px rgba(31,175,83,.7); }
+.btn-wa:hover { background: #17964A; }
+.btn-sm { padding: 10px 16px; font-size: 14px; border-radius: 10px; }
+.btn-lg { padding: 17px 28px; font-size: 17px; }
+.btns { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* header */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: rgba(255,255,255,.9); backdrop-filter: saturate(1.4) blur(12px); -webkit-backdrop-filter: saturate(1.4) blur(12px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 68px; }
+.brand { display: inline-flex; align-items: center; text-decoration: none; }
+.brand svg { height: 34px; width: auto; display: block; }
+.top nav { display: flex; align-items: center; gap: 26px; font-size: 14.5px; font-weight: 600; color: var(--grey); }
+.top nav a { text-decoration: none; }
+.top nav a:hover { color: var(--cyan-deep); }
+.top .act { display: flex; gap: 10px; align-items: center; }
+.menu { position: relative; display: none; }
+.menu summary { list-style: none; cursor: pointer; width: 42px; height: 42px; border-radius: 10px; border: 1px solid var(--line); display: grid; place-items: center; background: var(--white); }
+.menu summary::-webkit-details-marker { display: none; }
+.menu summary span, .menu summary span::before, .menu summary span::after { display: block; width: 18px; height: 2px; background: var(--navy); border-radius: 2px; position: relative; content: ""; }
+.menu summary span::before { position: absolute; top: -6px; }
+.menu summary span::after { position: absolute; top: 6px; }
+.menu .drop { position: absolute; right: 0; top: 50px; background: var(--white); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); padding: 8px; display: grid; min-width: 220px; }
+.menu .drop a { padding: 11px 14px; border-radius: 9px; text-decoration: none; font-weight: 600; color: var(--navy); font-size: 15px; }
+.menu .drop a:hover { background: var(--mist); }
+@media (max-width: 900px) {
+  .top nav { display: none; }
+  .menu { display: block; }
+  .top .act .hide-m { display: none; }
+}
+@media (max-width: 440px) { .top .act .btn-wa span { display: none; } .top .act .btn-wa { padding-inline: 12px; } .brand svg { height: 30px; } }
+
+/* chips + status */
+.chip { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+.chip.open { background: var(--cyan-soft); color: var(--cyan-deep); }
+.chip.ok { background: var(--ok-soft); color: var(--ok); }
+.chip.done { background: var(--mist); color: var(--grey); }
+.chip.wait { background: var(--amber-soft); color: var(--amber); }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 0 rgba(14,159,110,.5); animation: pulse 2s infinite; flex: none; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(14,159,110,.45); } 70% { box-shadow: 0 0 0 8px rgba(14,159,110,0); } 100% { box-shadow: 0 0 0 0 rgba(14,159,110,0); } }
+.tag { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--cyan-deep); background: var(--white); border: 1px solid var(--line); padding: 6px 13px 6px 8px; border-radius: 999px; }
+.tag i { width: 20px; height: 20px; border-radius: 50%; background: var(--cyan-soft); display: grid; place-items: center; font-style: normal; }
+.tag i svg { width: 12px; height: 12px; }
+
+/* hero shell */
+.hero { padding-block: clamp(40px, 6vw, 80px) clamp(56px, 7vw, 96px); background: linear-gradient(180deg, var(--cyan-soft) 0%, var(--white) 78%); position: relative; overflow: hidden; }
+.hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(32px, 5vw, 64px); align-items: center; }
+.hero-copy { display: grid; gap: 22px; justify-items: start; min-width: 0; }
+.hero-proof { display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 14px; font-weight: 600; color: var(--navy); }
+.hero-proof span { display: inline-flex; align-items: center; gap: 8px; }
+.hero-proof svg { width: 18px; height: 18px; color: var(--cyan); flex: none; }
+.hero-ring { position: absolute; right: -180px; top: -160px; width: 560px; height: 560px; opacity: .07; pointer-events: none; color: var(--cyan); }
+.hero > .wrap { position: relative; z-index: 1; }
+@media (max-width: 940px) { .hero-grid { grid-template-columns: 1fr; } }
+
+/* roles marquee */
+.roles { border-block: 1px solid var(--line); background: var(--white); overflow: hidden; padding-block: 18px; }
+.roles .track { display: flex; gap: 12px; width: max-content; animation: slide 46s linear infinite; }
+.roles:hover .track { animation-play-state: paused; }
+.roles span { font-family: var(--f-display); font-weight: 600; font-size: 15px; color: var(--navy); padding: 9px 18px; border-radius: 999px; background: var(--mist); white-space: nowrap; display: inline-flex; align-items: center; gap: 10px; }
+.roles span::before { content: ""; width: 7px; height: 7px; border-radius: 50%; border: 2px solid var(--cyan); }
+@keyframes slide { to { transform: translateX(-50%); } }
+
+/* steps */
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; counter-reset: s; }
+.steps.three { grid-template-columns: repeat(3, 1fr); }
+.step { display: grid; gap: 10px; align-content: start; padding: 26px 22px; background: var(--white); border: 1px solid var(--line); border-radius: var(--r); position: relative; min-width: 0; }
+.step::before { counter-increment: s; content: counter(s); font-family: var(--f-display); font-weight: 700; font-size: 14px; color: var(--white); background: var(--cyan); width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 6px; }
+.step p { color: var(--grey); font-size: 15px; }
+@media (max-width: 960px) { .steps, .steps.three { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .steps, .steps.three { grid-template-columns: 1fr; } }
+
+/* feature list */
+.feats { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 3vw, 40px); }
+.feat { display: grid; gap: 10px; align-content: start; padding-top: 22px; border-top: 2px solid var(--line); min-width: 0; }
+.feat .ic { width: 44px; height: 44px; border-radius: 12px; background: var(--cyan-soft); color: var(--cyan-deep); display: grid; place-items: center; margin-bottom: 6px; }
+.feat .ic svg { width: 22px; height: 22px; }
+.feat p { color: var(--grey); font-size: 15px; }
+@media (max-width: 860px) { .feats { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .feats { grid-template-columns: 1fr; } }
+
+/* navy band */
+.band { background: var(--navy); color: #C9D9E6; position: relative; overflow: hidden; }
+.band h2, .band h3 { color: var(--white); }
+.band .eyebrow { color: #6FD0F0; }
+.band .lead { color: #B5C9D8; }
+.band-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+.nums { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,.12); border-radius: var(--r); overflow: hidden; }
+.nums div { background: var(--navy); padding: 26px 24px; display: grid; gap: 4px; }
+.nums b { font-family: var(--f-display); font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--white); font-weight: 700; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.nums small { font-size: 14px; color: #9FB6C8; }
+.band .note { font-size: 12.5px; color: #8EA7BA; margin-top: 14px; }
+.band-ring { position: absolute; left: -140px; bottom: -200px; width: 480px; height: 480px; opacity: .06; }
+@media (max-width: 860px) { .band-grid { grid-template-columns: 1fr; } }
+
+/* cta band */
+.cta { background: var(--cyan); color: var(--white); position: relative; overflow: hidden; }
+.cta h2 { color: var(--white); }
+.cta p { color: #E3F5FC; }
+.cta .inner { display: grid; gap: 22px; justify-items: center; text-align: center; position: relative; z-index: 1; }
+.cta-ring { position: absolute; width: 520px; height: 520px; right: -120px; top: -140px; opacity: .14; }
+.cta-ring.l { left: -180px; right: auto; top: auto; bottom: -260px; }
+
+/* faq */
+.faq-list { display: grid; gap: 10px; max-width: 820px; margin-inline: auto; }
+.faq-list details { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 0 22px; }
+.faq-list details[open] { border-color: #BFE3F2; }
+.faq-list summary { cursor: pointer; list-style: none; font-family: var(--f-display); font-weight: 600; color: var(--navy); font-size: 16px; padding: 18px 0; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after { content: "+"; font-size: 22px; font-weight: 500; color: var(--cyan); line-height: 1; flex: none; transition: transform .2s ease; }
+.faq-list details[open] summary::after { transform: rotate(45deg); }
+.faq-list details p { color: var(--grey); padding-bottom: 20px; max-width: 68ch; }
+
+/* footer */
+.foot { background: var(--mist); border-top: 1px solid var(--line); padding-block: 56px 32px; }
+.foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; }
+.foot-grid > div { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.foot h4 { font-family: var(--f-body); font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--navy); font-weight: 700; margin-bottom: 4px; }
+.foot a { text-decoration: none; color: var(--grey); font-size: 14.5px; }
+.foot a:hover { color: var(--cyan-deep); }
+.foot .brand svg { height: 32px; }
+.foot .bottom { margin-top: 40px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px; color: var(--grey); }
+@media (max-width: 860px) { .foot-grid { grid-template-columns: 1fr 1fr; } .foot-grid > div:first-child { grid-column: 1 / -1; } }
+
+/* product mockups shared */
+.panel { background: var(--white); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow); overflow: hidden; min-width: 0; }
+.panel-h { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--line); }
+.panel-h b { font-family: var(--f-display); font-weight: 600; color: var(--navy); font-size: 15px; display: inline-flex; align-items: center; gap: 10px; }
+.panel-h time { font-size: 13px; color: var(--grey); font-weight: 600; font-variant-numeric: tabular-nums; }
+.caption { font-size: 12px; color: var(--grey); margin-top: 10px; text-align: right; }
+.avatar { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-family: var(--f-display); font-weight: 600; font-size: 13px; color: var(--navy); background: var(--cyan-soft); flex: none; }
+
+/* phone */
+.phone { width: 300px; max-width: 100%; aspect-ratio: 300 / 610; border-radius: 44px; background: var(--navy); padding: 10px; box-shadow: 0 30px 60px -24px rgba(11,46,71,.45); position: relative; }
+.phone .scr { width: 100%; height: 100%; border-radius: 35px; background: var(--mist); overflow: hidden; display: flex; flex-direction: column; position: relative; }
+.phone .notch { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); width: 90px; height: 24px; background: var(--navy); border-radius: 20px; z-index: 3; }
+.phone .sb { display: flex; justify-content: space-between; padding: 16px 26px 8px; font-size: 11px; font-weight: 700; color: var(--navy); font-variant-numeric: tabular-nums; }
+
+.split-2 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+.split-2 > * { min-width: 0; }
+@media (max-width: 860px) { .split-2 { grid-template-columns: 1fr; } }
+
+.checks { display: grid; gap: 14px; }
+.checks li { display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: start; }
+.checks li svg { width: 22px; height: 22px; color: var(--cyan); margin-top: 1px; }
+.checks b { font-family: var(--f-display); font-weight: 600; color: var(--navy); display: block; }
+.checks span { color: var(--grey); font-size: 15px; }
+
+
+/* paths */
+.paths { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; max-width: 560px; }
+.path { display: grid; gap: 6px; padding: 18px 18px 16px; border-radius: var(--r); text-decoration: none; border: 1.5px solid var(--line); background: var(--white); transition: border-color .15s, transform .15s, box-shadow .15s; min-width: 0; }
+.path:hover { border-color: var(--cyan); transform: translateY(-2px); box-shadow: var(--shadow); }
+.path small { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--cyan-deep); }
+.path b { font-family: var(--f-display); font-weight: 600; color: var(--navy); font-size: 17px; line-height: 1.25; }
+.path span { font-size: 14px; color: var(--grey); }
+.path i { font-style: normal; display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-display); font-weight: 600; font-size: 14px; color: var(--cyan-deep); margin-top: 6px; }
+.path i svg { width: 16px; height: 16px; }
+.path.dark { background: var(--navy); border-color: var(--navy); }
+.path.dark small { color: #6FD0F0; }
+.path.dark b { color: var(--white); }
+.path.dark span { color: #B5C9D8; }
+.path.dark i { color: #6FD0F0; }
+@media (max-width: 520px) { .paths { grid-template-columns: 1fr; } }
+
+/* board */
+.board { width: 100%; }
+.board table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.board th { text-align: left; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--grey); font-weight: 700; padding: 10px 20px; background: var(--mist); }
+.board td { padding: 13px 20px; border-top: 1px solid var(--line); vertical-align: middle; }
+.board td b { font-family: var(--f-display); font-weight: 600; color: var(--navy); display: block; font-size: 14.5px; }
+.board td small { color: var(--grey); font-size: 12.5px; }
+.board td.t { font-variant-numeric: tabular-nums; color: var(--ink); font-weight: 600; white-space: nowrap; }
+.board td:last-child { text-align: right; }
+.board tr.flash td { animation: flash 1.2s ease; }
+@keyframes flash { 0% { background: var(--cyan-soft); } 100% { background: transparent; } }
+.board .foot-row { display: flex; justify-content: space-between; gap: 12px; padding: 14px 20px; border-top: 1px solid var(--line); font-size: 13px; color: var(--grey); background: var(--white); }
+.board .foot-row b { color: var(--navy); font-family: var(--f-display); font-weight: 600; }
+.board-scroll { overflow-x: auto; }
+@media (max-width: 520px) { .board th:nth-child(2), .board td:nth-child(2) { display: none; } .board td, .board th { padding-inline: 14px; } }
+
+/* duo */
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.duo-card { border-radius: 20px; padding: clamp(24px, 3.5vw, 40px); display: grid; gap: 22px; align-content: start; min-width: 0; }
+.duo-card.a { background: var(--white); border: 1px solid var(--line); }
+.duo-card.b { background: var(--navy); color: #C9D9E6; }
+.duo-card.b h3 { color: var(--white); }
+.duo-card .who { display: flex; align-items: center; gap: 12px; }
+.duo-card .who .ic { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; background: var(--cyan-soft); color: var(--cyan-deep); flex: none; }
+.duo-card.b .who .ic { background: rgba(0,159,209,.18); color: #6FD0F0; }
+.duo-card .who svg { width: 24px; height: 24px; }
+.duo-card h3 { font-size: 1.35rem; }
+.duo-card .who small { display: block; font-size: 12.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--cyan-deep); }
+.duo-card.b .who small { color: #6FD0F0; }
+.duo-card ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 16px; counter-reset: d; }
+.duo-card li { display: grid; grid-template-columns: 34px 1fr; gap: 14px; align-items: start; counter-increment: d; }
+.duo-card li::before { content: counter(d); width: 34px; height: 34px; border-radius: 50%; border: 1.6px solid var(--cyan); color: var(--cyan-deep); display: grid; place-items: center; font-family: var(--f-display); font-weight: 600; font-size: 14px; }
+.duo-card.b li::before { color: #6FD0F0; }
+.duo-card li b { font-family: var(--f-display); font-weight: 600; color: var(--navy); display: block; }
+.duo-card.b li b { color: var(--white); }
+.duo-card li span { font-size: 15px; color: var(--grey); }
+.duo-card.b li span { color: #B5C9D8; }
+@media (max-width: 860px) { .duo { grid-template-columns: 1fr; } }
+
+/* timeline */
+.line { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; position: relative; }
+.line::before { content: ""; position: absolute; left: 8%; right: 8%; top: 27px; height: 2px; background: repeating-linear-gradient(90deg, var(--cyan) 0 8px, transparent 8px 14px); }
+.stop { display: grid; gap: 8px; align-content: start; justify-items: center; text-align: center; padding-inline: 10px; position: relative; min-width: 0; }
+.stop time { font-family: var(--f-display); font-weight: 700; font-size: 13px; color: var(--cyan-deep); background: var(--mist); padding: 0 8px; font-variant-numeric: tabular-nums; }
+.stop .pt { width: 22px; height: 22px; border-radius: 50%; background: var(--white); border: 2px solid var(--cyan); display: grid; place-items: center; position: relative; z-index: 1; }
+.stop .pt::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); }
+.stop.last .pt { background: var(--cyan); }
+.stop.last .pt::after { background: var(--white); }
+.stop b { font-family: var(--f-display); font-weight: 600; color: var(--navy); font-size: 15px; line-height: 1.3; }
+.stop span { font-size: 13.5px; color: var(--grey); }
+.stop .who { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--grey); }
+@media (max-width: 900px) {
+  .line { grid-template-columns: 1fr; gap: 22px; }
+  .line::before { left: 59px; right: auto; top: 10px; bottom: 10px; width: 2px; height: auto; background: repeating-linear-gradient(180deg, var(--cyan) 0 8px, transparent 8px 14px); }
+  .stop { grid-template-columns: 48px 22px 1fr; justify-items: start; text-align: left; column-gap: 14px; row-gap: 2px; padding: 0; }
+  .stop time { grid-row: 1 / span 3; padding: 0; background: none; align-self: start; margin-top: 1px; }
+  .stop .pt { grid-row: 1 / span 3; }
+  .stop .who, .stop b, .stop span { grid-column: 3; }
+}
+
+/* segments */
+.segs { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+.seg { display: grid; gap: 10px; justify-items: center; text-align: center; padding: 24px 12px; border-radius: var(--r); background: var(--white); border: 1px solid var(--line); }
+.seg svg { width: 30px; height: 30px; color: var(--cyan); }
+.seg b { font-family: var(--f-display); font-weight: 600; color: var(--navy); font-size: 15px; }
+@media (max-width: 900px) { .segs { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 480px) { .segs { grid-template-columns: 1fr 1fr; } }
+.m-only{display:none}@media (max-width:520px){.m-only{display:block}}
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="o-logo" viewBox="10 -74 338 104">
+<path transform="translate(12,-71.762)" d="M98.0 48.8 97.6 44.1 97.2 41.2 96.8 39.2 95.6 34.9 94.7 32.5 93.5 29.7 92.6 27.9 91.2 25.3 88.7 21.6 86.0 18.2 82.7 14.8 80.7 13.1 78.8 11.6 75.2 9.1 71.3 7.0 67.0 5.1 62.5 3.7 60.2 3.1 57.6 2.6 53.2 2.1 48.8 2.0 44.1 2.4 41.2 2.8 39.2 3.2 34.9 4.4 32.5 5.3 29.7 6.5 27.9 7.4 25.3 8.8 21.6 11.3 18.2 14.0 14.8 17.3 13.1 19.3 11.6 21.2 9.1 24.8 7.0 28.7 5.1 33.0 3.7 37.5 3.1 39.8 2.6 42.4 2.1 46.8 2.0 51.2 2.4 55.9 2.8 58.8 3.2 60.8 4.4 65.1 5.3 67.5 6.5 70.3 7.4 72.1 8.8 74.7 11.3 78.4 14.0 81.8 17.3 85.2 19.3 86.9 21.2 88.4 24.8 90.9 28.7 93.0 33.0 94.9 37.5 96.3 39.8 96.9 42.4 97.4 46.8 97.9 51.2 98.0 55.9 97.6 58.8 97.2 60.8 96.8 65.1 95.6 67.5 94.7 70.3 93.5 72.1 92.6 74.7 91.2 78.4 88.7 81.8 86.0 85.2 82.7 86.9 80.7 88.4 78.8 90.9 75.2 93.0 71.3 94.9 67.0 96.3 62.5 96.9 60.2 97.4 57.6 97.9 53.2 98.0 48.8ZM84.7 41.8 84.7 43.3 84.4 45.5 83.7 48.8 82.7 51.7 81.8 53.6 80.9 55.1 80.0 56.6 78.8 58.2 76.6 60.5 75.1 61.8 73.6 63.0 72.1 64.0 70.6 64.8 71.0 62.3 71.3 59.2 71.2 56.5 71.0 54.1 72.0 53.0 73.0 51.7 73.9 50.4 74.6 49.0 75.2 47.5 75.7 45.9 76.2 43.1 76.2 41.5 76.2 40.2 75.8 37.7 75.4 36.1 74.9 34.8 73.6 32.2 72.5 30.7 71.4 29.4 70.0 28.0 68.7 27.0 67.0 25.9 65.2 25.1 63.9 24.6 61.6 24.0 59.8 23.8 57.9 23.8 55.8 24.0 54.1 24.3 52.1 24.9 50.7 25.6 49.2 26.4 47.6 27.5 45.9 29.0 44.3 30.9 43.2 32.5 42.0 34.9 41.3 37.1 40.9 39.2 40.7 41.0 40.9 43.8 41.1 45.3 41.6 46.9 42.5 49.3 44.0 51.7 45.0 53.0 45.9 54.1 47.0 55.0 48.3 56.0 50.5 57.4 53.1 58.4 54.7 58.9 55.7 59.0 55.8 59.1 55.5 61.2 55.0 63.0 54.0 65.4 52.8 67.2 50.7 66.6 48.4 65.8 46.1 64.7 44.3 63.6 42.5 62.3 40.4 60.5 39.1 59.3 37.7 57.5 36.5 55.8 35.3 53.9 34.2 51.6 33.5 49.6 32.9 47.3 32.5 45.0 32.3 43.1 32.2 40.9 32.4 38.5 32.9 35.8 33.5 33.5 34.4 31.0 35.3 29.1 37.0 26.4 38.5 24.5 40.4 22.5 42.5 20.7 44.3 19.4 47.0 17.9 49.0 17.0 51.6 16.2 54.2 15.6 56.7 15.3 59.1 15.3 61.4 15.4 64.2 15.9 66.6 16.5 69.0 17.4 71.4 18.7 73.6 20.1 75.5 21.5 77.5 23.4 79.2 25.4 80.6 27.3 82.1 30.0 83.0 32.1 83.8 34.7 84.4 37.2 84.7 39.7 84.7 41.8ZM47.4 32.9 50.0 33.7 52.3 34.5 53.9 35.3 56.6 37.0 58.5 38.5 60.5 40.4 62.4 42.6 64.0 44.9 65.2 47.1 66.2 49.5 66.9 51.6 67.4 54.2 67.7 56.9 67.8 59.1 67.6 61.5 67.1 64.2 66.5 66.5 65.6 69.0 64.7 70.9 63.0 73.6 61.5 75.5 59.6 77.5 57.5 79.3 55.7 80.6 53.0 82.1 51.0 83.0 48.4 83.8 45.8 84.4 43.3 84.7 40.9 84.7 38.6 84.6 35.8 84.1 33.4 83.5 31.0 82.5 28.6 81.3 26.4 80.0 24.5 78.5 22.5 76.6 20.8 74.6 19.4 72.7 17.9 70.0 17.0 67.9 16.2 65.3 15.6 62.8 15.3 60.3 15.3 57.8 15.4 55.6 15.9 52.7 16.7 50.0 17.8 47.3 19.1 44.9 20.7 42.5 22.5 40.4 24.9 38.2 27.2 36.5 29.4 35.2 29.0 37.7 28.7 40.8 28.8 43.5 29.1 45.9 28.0 47.0 27.0 48.3 25.6 50.7 24.6 53.1 24.2 54.7 23.9 56.5 23.8 59.0 24.1 61.8 24.8 64.5 25.4 66.0 26.1 67.3 27.3 69.2 28.4 70.4 29.6 71.6 30.9 72.7 32.5 73.8 34.0 74.6 35.5 75.2 37.1 75.7 38.8 76.0 40.5 76.2 42.5 76.2 44.2 76.0 45.9 75.7 47.9 75.0 49.3 74.4 50.8 73.6 52.8 72.2 54.7 70.4 56.0 68.7 57.4 66.5 58.2 64.5 58.9 62.3 59.2 59.8 59.2 57.2 59.1 55.8 58.7 54.1 57.8 51.4 57.1 50.0 56.3 48.7 55.5 47.6 54.5 46.4 52.4 44.5 50.0 42.9 48.6 42.2 46.9 41.6 45.3 41.1 44.3 41.0 44.2 40.9 44.5 38.6 45.2 36.2 46.0 34.6 46.7 33.5 47.2 32.9 47.4 32.9ZM53.5 50.0 53.4 50.8 53.2 51.4 52.9 52.0 52.4 52.5 52.0 52.9 51.3 53.3 50.6 53.5 49.8 53.5 49.1 53.4 48.5 53.1 47.9 52.8 47.4 52.3 47.0 51.7 46.7 51.2 46.5 50.6 46.5 49.8 46.6 49.1 46.9 48.5 47.2 47.9 47.7 47.4 48.3 47.0 48.8 46.7 49.4 46.5 50.2 46.5 50.9 46.6 51.5 46.9 52.5 47.6 52.9 48.0 53.3 48.7 53.5 49.4 53.5 50.0Z" fill-rule="evenodd" style="fill:var(--sym,#009FD1)"/>
+<path transform="translate(126,0)" d="M2.184 -21.762Q2.184 -28.47 5.148 -33.579Q8.112 -38.688 13.260000000000002 -41.418000000000006Q18.408 -44.148 24.804 -44.148Q31.2 -44.148 36.348 -41.418000000000006Q41.496 -38.688 44.46 -33.579Q47.424 -28.47 47.424 -21.762Q47.424 -15.054 44.421 -9.945Q41.418 -4.836 36.231 -2.1060000000000003Q31.044 0.624 24.648 0.624Q18.252 0.624 13.143 -2.1060000000000003Q8.034 -4.836 5.109 -9.905999999999999Q2.184 -14.975999999999999 2.184 -21.762ZM33.852 -21.762Q33.852 -26.988 31.238999999999997 -29.796Q28.626 -32.604 24.804 -32.604Q20.904 -32.604 18.33 -29.835Q15.756 -27.066 15.756 -21.762Q15.756 -16.536 18.291 -13.728000000000002Q20.826 -10.92 24.648 -10.92Q28.47 -10.92 31.160999999999998 -13.728000000000002Q33.852 -16.536 33.852 -21.762Z M78.93599999999999 -44.148Q84.318 -44.148 88.686 -41.418000000000006Q93.054 -38.688 95.589 -33.618Q98.124 -28.548 98.124 -21.84Q98.124 -15.132 95.589 -10.023Q93.054 -4.914 88.686 -2.145Q84.318 0.624 78.93599999999999 0.624Q74.41199999999999 0.624 70.941 -1.248Q67.47 -3.12 65.52 -6.084V20.748H52.181999999999995V-43.524H65.52V-37.362Q67.47 -40.404 70.902 -42.276Q74.334 -44.148 78.93599999999999 -44.148ZM74.958 -32.526Q70.97999999999999 -32.526 68.21099999999998 -29.64Q65.442 -26.754 65.442 -21.762Q65.442 -16.77 68.21099999999998 -13.884Q70.97999999999999 -10.998 74.958 -10.998Q78.93599999999999 -10.998 81.744 -13.922999999999998Q84.55199999999999 -16.848 84.55199999999999 -21.84Q84.55199999999999 -26.832 81.78299999999999 -29.679000000000002Q79.014 -32.526 74.958 -32.526Z M143.598 -18.564H113.412Q113.724 -14.508 116.025 -12.363Q118.32600000000001 -10.218 121.68 -10.218Q126.672 -10.218 128.622 -14.43H142.818Q141.726 -10.14 138.87900000000002 -6.708Q136.032 -3.276 131.74200000000002 -1.3259999999999998Q127.452 0.624 122.148 0.624Q115.75200000000001 0.624 110.76 -2.1060000000000003Q105.768 -4.836 102.96000000000001 -9.905999999999999Q100.152 -14.975999999999999 100.152 -21.762Q100.152 -28.548 102.92099999999999 -33.618Q105.69 -38.688 110.682 -41.418000000000006Q115.674 -44.148 122.148 -44.148Q128.466 -44.148 133.38 -41.496Q138.294 -38.844 141.063 -33.93Q143.832 -29.016 143.832 -22.464Q143.832 -20.592 143.598 -18.564ZM130.18200000000002 -25.974Q130.18200000000002 -29.406 127.84200000000001 -31.434Q125.50200000000001 -33.462 121.992 -33.462Q118.638 -33.462 116.337 -31.512Q114.036 -29.562 113.49000000000001 -25.974Z M189.30599999999998 -18.564H159.11999999999998Q159.432 -14.508 161.733 -12.363Q164.034 -10.218 167.38799999999998 -10.218Q172.38 -10.218 174.32999999999998 -14.43H188.52599999999998Q187.434 -10.14 184.587 -6.708Q181.73999999999998 -3.276 177.45 -1.3259999999999998Q173.16 0.624 167.856 0.624Q161.45999999999998 0.624 156.468 -2.1060000000000003Q151.476 -4.836 148.668 -9.905999999999999Q145.85999999999999 -14.975999999999999 145.85999999999999 -21.762Q145.85999999999999 -28.548 148.629 -33.618Q151.398 -38.688 156.39 -41.418000000000006Q161.38199999999998 -44.148 167.856 -44.148Q174.17399999999998 -44.148 179.08799999999997 -41.496Q184.00199999999998 -38.844 186.771 -33.93Q189.54 -29.016 189.54 -22.464Q189.54 -20.592 189.30599999999998 -18.564ZM175.89 -25.974Q175.89 -29.406 173.54999999999998 -31.434Q171.20999999999998 -33.462 167.7 -33.462Q164.346 -33.462 162.04500000000002 -31.512Q159.744 -29.562 159.19799999999998 -25.974Z M221.208 -43.992V-29.874H217.54199999999997Q212.54999999999998 -29.874 210.05399999999997 -27.729Q207.558 -25.584 207.558 -20.202V0.0H194.22V-43.524H207.558V-36.27Q209.898 -39.858 213.408 -41.925Q216.91799999999998 -43.992 221.208 -43.992Z" style="fill:var(--word,#0B2E47)"/>
+</symbol>
+<symbol id="o-sym" viewBox="0 0 100 100"><path d="M98.0 48.8 97.6 44.1 97.2 41.2 96.8 39.2 95.6 34.9 94.7 32.5 93.5 29.7 92.6 27.9 91.2 25.3 88.7 21.6 86.0 18.2 82.7 14.8 80.7 13.1 78.8 11.6 75.2 9.1 71.3 7.0 67.0 5.1 62.5 3.7 60.2 3.1 57.6 2.6 53.2 2.1 48.8 2.0 44.1 2.4 41.2 2.8 39.2 3.2 34.9 4.4 32.5 5.3 29.7 6.5 27.9 7.4 25.3 8.8 21.6 11.3 18.2 14.0 14.8 17.3 13.1 19.3 11.6 21.2 9.1 24.8 7.0 28.7 5.1 33.0 3.7 37.5 3.1 39.8 2.6 42.4 2.1 46.8 2.0 51.2 2.4 55.9 2.8 58.8 3.2 60.8 4.4 65.1 5.3 67.5 6.5 70.3 7.4 72.1 8.8 74.7 11.3 78.4 14.0 81.8 17.3 85.2 19.3 86.9 21.2 88.4 24.8 90.9 28.7 93.0 33.0 94.9 37.5 96.3 39.8 96.9 42.4 97.4 46.8 97.9 51.2 98.0 55.9 97.6 58.8 97.2 60.8 96.8 65.1 95.6 67.5 94.7 70.3 93.5 72.1 92.6 74.7 91.2 78.4 88.7 81.8 86.0 85.2 82.7 86.9 80.7 88.4 78.8 90.9 75.2 93.0 71.3 94.9 67.0 96.3 62.5 96.9 60.2 97.4 57.6 97.9 53.2 98.0 48.8ZM84.7 41.8 84.7 43.3 84.4 45.5 83.7 48.8 82.7 51.7 81.8 53.6 80.9 55.1 80.0 56.6 78.8 58.2 76.6 60.5 75.1 61.8 73.6 63.0 72.1 64.0 70.6 64.8 71.0 62.3 71.3 59.2 71.2 56.5 71.0 54.1 72.0 53.0 73.0 51.7 73.9 50.4 74.6 49.0 75.2 47.5 75.7 45.9 76.2 43.1 76.2 41.5 76.2 40.2 75.8 37.7 75.4 36.1 74.9 34.8 73.6 32.2 72.5 30.7 71.4 29.4 70.0 28.0 68.7 27.0 67.0 25.9 65.2 25.1 63.9 24.6 61.6 24.0 59.8 23.8 57.9 23.8 55.8 24.0 54.1 24.3 52.1 24.9 50.7 25.6 49.2 26.4 47.6 27.5 45.9 29.0 44.3 30.9 43.2 32.5 42.0 34.9 41.3 37.1 40.9 39.2 40.7 41.0 40.9 43.8 41.1 45.3 41.6 46.9 42.5 49.3 44.0 51.7 45.0 53.0 45.9 54.1 47.0 55.0 48.3 56.0 50.5 57.4 53.1 58.4 54.7 58.9 55.7 59.0 55.8 59.1 55.5 61.2 55.0 63.0 54.0 65.4 52.8 67.2 50.7 66.6 48.4 65.8 46.1 64.7 44.3 63.6 42.5 62.3 40.4 60.5 39.1 59.3 37.7 57.5 36.5 55.8 35.3 53.9 34.2 51.6 33.5 49.6 32.9 47.3 32.5 45.0 32.3 43.1 32.2 40.9 32.4 38.5 32.9 35.8 33.5 33.5 34.4 31.0 35.3 29.1 37.0 26.4 38.5 24.5 40.4 22.5 42.5 20.7 44.3 19.4 47.0 17.9 49.0 17.0 51.6 16.2 54.2 15.6 56.7 15.3 59.1 15.3 61.4 15.4 64.2 15.9 66.6 16.5 69.0 17.4 71.4 18.7 73.6 20.1 75.5 21.5 77.5 23.4 79.2 25.4 80.6 27.3 82.1 30.0 83.0 32.1 83.8 34.7 84.4 37.2 84.7 39.7 84.7 41.8ZM47.4 32.9 50.0 33.7 52.3 34.5 53.9 35.3 56.6 37.0 58.5 38.5 60.5 40.4 62.4 42.6 64.0 44.9 65.2 47.1 66.2 49.5 66.9 51.6 67.4 54.2 67.7 56.9 67.8 59.1 67.6 61.5 67.1 64.2 66.5 66.5 65.6 69.0 64.7 70.9 63.0 73.6 61.5 75.5 59.6 77.5 57.5 79.3 55.7 80.6 53.0 82.1 51.0 83.0 48.4 83.8 45.8 84.4 43.3 84.7 40.9 84.7 38.6 84.6 35.8 84.1 33.4 83.5 31.0 82.5 28.6 81.3 26.4 80.0 24.5 78.5 22.5 76.6 20.8 74.6 19.4 72.7 17.9 70.0 17.0 67.9 16.2 65.3 15.6 62.8 15.3 60.3 15.3 57.8 15.4 55.6 15.9 52.7 16.7 50.0 17.8 47.3 19.1 44.9 20.7 42.5 22.5 40.4 24.9 38.2 27.2 36.5 29.4 35.2 29.0 37.7 28.7 40.8 28.8 43.5 29.1 45.9 28.0 47.0 27.0 48.3 25.6 50.7 24.6 53.1 24.2 54.7 23.9 56.5 23.8 59.0 24.1 61.8 24.8 64.5 25.4 66.0 26.1 67.3 27.3 69.2 28.4 70.4 29.6 71.6 30.9 72.7 32.5 73.8 34.0 74.6 35.5 75.2 37.1 75.7 38.8 76.0 40.5 76.2 42.5 76.2 44.2 76.0 45.9 75.7 47.9 75.0 49.3 74.4 50.8 73.6 52.8 72.2 54.7 70.4 56.0 68.7 57.4 66.5 58.2 64.5 58.9 62.3 59.2 59.8 59.2 57.2 59.1 55.8 58.7 54.1 57.8 51.4 57.1 50.0 56.3 48.7 55.5 47.6 54.5 46.4 52.4 44.5 50.0 42.9 48.6 42.2 46.9 41.6 45.3 41.1 44.3 41.0 44.2 40.9 44.5 38.6 45.2 36.2 46.0 34.6 46.7 33.5 47.2 32.9 47.4 32.9ZM53.5 50.0 53.4 50.8 53.2 51.4 52.9 52.0 52.4 52.5 52.0 52.9 51.3 53.3 50.6 53.5 49.8 53.5 49.1 53.4 48.5 53.1 47.9 52.8 47.4 52.3 47.0 51.7 46.7 51.2 46.5 50.6 46.5 49.8 46.6 49.1 46.9 48.5 47.2 47.9 47.7 47.4 48.3 47.0 48.8 46.7 49.4 46.5 50.2 46.5 50.9 46.6 51.5 46.9 52.5 47.6 52.9 48.0 53.3 48.7 53.5 49.4 53.5 50.0Z" fill-rule="evenodd" fill="currentColor"/></symbol>
+</svg>
+<header class="top"><div class="wrap">
+<a class="brand" href="/" aria-label="Opeer, início"><svg class="" viewBox="0 0 338 104" role="img" aria-label="Opeer" style="--sym:#009FD1;--word:#0B2E47"><use href="#o-logo"/></svg></a>
+<nav aria-label="Principal"><a href="#como">Como funciona</a><a href="/empresas/">Para empresas</a><a href="/freela/">Para freelas</a><a href="#sobre">Sobre</a><a href="#duvidas">Dúvidas</a></nav>
+<div class="act"><a class="btn btn-ghost btn-sm hide-m" href="/freela/">Sou freela</a><a class="btn btn-primary btn-sm" href="/empresas/">Sou empresa</a><details class="menu"><summary aria-label="Abrir menu"><span></span></summary><div class="drop"><a href="#como">Como funciona</a><a href="/empresas/">Para empresas</a><a href="/freela/">Para freelas</a><a href="#sobre">Sobre</a><a href="#duvidas">Dúvidas</a></div></details></div>
+</div></header>
+<main>
+<section class="hero">
+  <svg class="hero-ring" viewBox="0 0 100 100" aria-hidden="true" style="color:currentColor"><use href="#o-sym"/></svg>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="tag"><i><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3L5 13.5h6L10 21l8-10.5h-6L13 3z"/></svg></i>Turnos avulsos pra bares, restaurantes e eventos</span>
+      <h1>Gente pro turno <em>de hoje.</em></h1>
+      <p class="lead">A Opeer conecta casas que precisam de reforço a profissionais verificados de salão, cozinha e bar. A casa escolhe quem vai, o freela escolhe onde trabalha e a Opeer cuida do pagamento e da nota.</p>
+      <div class="paths">
+        <a class="path" href="/empresas/"><small>Para empresas</small><b>Tenho bar, restaurante ou evento</b><span>Abra um turno e escolha quem vai.</span><i>Conhecer <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+        <a class="path dark" href="/freela/"><small>Para freelas</small><b>Quero fazer turnos</b><span>Escolha o turno. Pix no dia seguinte.</span><i>Conhecer <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+      </div>
+    </div>
+    <div>
+      <div class="panel board" aria-label="Exemplo do quadro de turnos">
+        <div class="panel-h"><b><span class="dot"></span>Turnos de hoje</b><time id="clock">17:42</time></div>
+        <div class="board-scroll"><table>
+          <thead><tr><th>Função</th><th>Casa</th><th>Horário</th><th>Status</th></tr></thead>
+          <tbody id="rows"><tr data-i="0"><td><b>Cumim</b><small class="m-only">Restaurante</small></td><td>Restaurante</td><td class="t">18:00 – 00:00</td><td><span class="chip ok">Escolhido</span></td></tr><tr data-i="1"><td><b>Ajudante de cozinha</b><small class="m-only">Bar</small></td><td>Bar</td><td class="t">17:00 – 23:00</td><td><span class="chip open">4 candidatos</span></td></tr><tr data-i="2"><td><b>Garçom</b><small class="m-only">Evento corporativo</small></td><td>Evento corporativo</td><td class="t">19:00 – 02:00</td><td><span class="chip open">7 candidatos</span></td></tr><tr data-i="3"><td><b>Barback</b><small class="m-only">Bar</small></td><td>Bar</td><td class="t">20:00 – 02:00</td><td><span class="chip wait">Aberto</span></td></tr><tr data-i="4"><td><b>Atendente</b><small class="m-only">Fast food</small></td><td>Fast food</td><td class="t">18:00 – 23:00</td><td><span class="chip ok">Escolhido</span></td></tr><tr data-i="5"><td><b>Pia</b><small class="m-only">Restaurante</small></td><td>Restaurante</td><td class="t">11:00 – 16:00</td><td><span class="chip done">Turno feito</span></td></tr></tbody>
+        </table></div>
+        <div class="foot-row"><span>Profissionais verificados, com nota e histórico</span><b>Pix no dia seguinte</b></div>
+      </div>
+      <p class="caption">Exemplo ilustrativo do app</p>
+    </div>
+  </div>
+</section>
+
+<div class="roles" aria-label="Funções com turno na Opeer"><div class="track"><span>Cumim</span><span>Garçom</span><span>Ajudante de cozinha</span><span>Pia</span><span>Atendente</span><span>Serviços gerais</span><span>Barback</span><span>Bartender</span><span>Caixa</span><span>Chapeiro</span><span>Cozinheiro</span><span>Recepção</span><span>Equipe de evento</span><span>Copeiro</span><span>Pizzaiolo</span><span>Barista</span><span>Estoquista</span><span>Confeiteiro</span><span aria-hidden="true">Cumim</span><span aria-hidden="true">Garçom</span><span aria-hidden="true">Ajudante de cozinha</span><span aria-hidden="true">Pia</span><span aria-hidden="true">Atendente</span><span aria-hidden="true">Serviços gerais</span><span aria-hidden="true">Barback</span><span aria-hidden="true">Bartender</span><span aria-hidden="true">Caixa</span><span aria-hidden="true">Chapeiro</span><span aria-hidden="true">Cozinheiro</span><span aria-hidden="true">Recepção</span><span aria-hidden="true">Equipe de evento</span><span aria-hidden="true">Copeiro</span><span aria-hidden="true">Pizzaiolo</span><span aria-hidden="true">Barista</span><span aria-hidden="true">Estoquista</span><span aria-hidden="true">Confeiteiro</span></div></div>
+
+<section id="como">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Como funciona</span><h2>Os dois lados do turno, num app só</h2><p class="lead">A casa diz do que precisa. O profissional diz onde quer trabalhar. A Opeer junta os dois e resolve o resto.</p></div>
+    <div class="duo">
+      <div class="duo-card a">
+        <div class="who"><span class="ic"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5V20h16V9.5"/><path d="M3 9.5L5 4h14l2 5.5c0 1.4-1.1 2.5-2.5 2.5S16 10.9 16 9.5c0 1.4-1.1 2.5-2.5 2.5h-3C9.1 12 8 10.9 8 9.5 8 10.9 6.9 12 5.5 12S3 10.9 3 9.5z"/><path d="M10 20v-5h4v5"/></svg></span><div><small>Para a casa</small><h3>Faltou gente? Resolve no app.</h3></div></div>
+        <ol>
+          <li><div><b>Abra o turno</b><span>Escolha a função no catálogo, o horário, o valor e o que você exige.</span></div></li>
+          <li><div><b>Veja quem se candidatou</b><span>Cada perfil mostra nota, turnos feitos e faltas.</span></div></li>
+          <li><div><b>Escolha e pronto</b><span>O profissional faz check-in no app. Você avalia e recebe a fatura com nota.</span></div></li>
+        </ol>
+        <a class="btn btn-primary" href="/empresas/" style="justify-self:start">Opeer para empresas <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="duo-card b">
+        <div class="who"><span class="ic"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9.5" cy="8" r="3.5"/><path d="M3 20c.6-3.6 3.2-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><path d="M16 10.5l2 2 3.5-3.7"/></svg></span><div><small>Para o freela</small><h3>Turno hoje, Pix amanhã.</h3></div></div>
+        <ol>
+          <li><div><b>Faça seu cadastro</b><span>Começa pelo WhatsApp. Sem taxa e sem precisar de MEI.</span></div></li>
+          <li><div><b>Escolha o turno</b><span>Você vê função, horário, valor e distância antes de se candidatar.</span></div></li>
+          <li><div><b>Trabalhe e receba</b><span>Check-in no app, turno feito, Pix no dia seguinte.</span></div></li>
+        </ol>
+        <a class="btn btn-white" href="/freela/" style="justify-self:start">Opeer para freelas <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tint">
+  <div class="wrap">
+    <div class="sec-head center"><span class="eyebrow">Um turno na Opeer</span><h2>Do aviso de falta ao Pix</h2><p class="lead">Exemplo de uma noite comum: alguém avisou que não vem e a casa resolve antes do serviço começar.</p></div>
+    <div class="line">
+      <div class="stop"><time>16:40</time><span class="pt"></span><span class="who">Casa</span><b>Abre o turno</b><span>Cumim, 18h às 00h, valor definido</span></div>
+      <div class="stop"><time>16:45</time><span class="pt"></span><span class="who">Freelas</span><b>Candidaturas chegam</b><span>Profissionais da região veem e se candidatam</span></div>
+      <div class="stop"><time>17:05</time><span class="pt"></span><span class="who">Casa</span><b>Escolhe quem vai</b><span>Olhando nota, turnos feitos e faltas</span></div>
+      <div class="stop"><time>18:00</time><span class="pt"></span><span class="who">Freela</span><b>Check-in no app</b><span>O turno começa e fica registrado</span></div>
+      <div class="stop"><time>00:00</time><span class="pt"></span><span class="who">Casa</span><b>Avalia o turno</b><span>A nota entra no histórico do profissional</span></div>
+      <div class="stop last"><time>Amanhã</time><span class="pt"></span><span class="who">Opeer</span><b>Pix e nota</b><span>Pix pro freela, fatura com nota pra casa</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Por que a Opeer</span><h2>O que muda no seu turno</h2></div>
+    <div class="feats">
+      <div class="feat"><span class="ic"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0116 0v2"/><rect x="3" y="13" width="4" height="6" rx="1.5"/><rect x="17" y="13" width="4" height="6" rx="1.5"/><path d="M19 19c0 1.5-2 2.5-5 2.5"/></svg></span><h3>Suporte em campo</h3><p>Quando dá problema, quem resolve é uma pessoa do nosso time, que já circula nas lojas todos os dias.</p></div>
+      <div class="feat"><span class="ic"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9.5" cy="8" r="3.5"/><path d="M3 20c.6-3.6 3.2-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><path d="M16 10.5l2 2 3.5-3.7"/></svg></span><h3>Gente verificada</h3><p>Todo profissional passa por verificação e carrega um histórico real: nota, turnos feitos e faltas.</p></div>
+      <div class="feat"><span class="ic"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.3-7.5 9.5-4.3-1.2-7.5-4.9-7.5-9.5V6L12 3z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg></span><h3>Sem vínculo, com nota</h3><p>A Opeer intermedeia cada turno, com termo, pagamento rastreado e nota fiscal. Nada de pagar por fora.</p></div>
+      <div class="feat"><span class="ic"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 11V5.5a1.5 1.5 0 013 0V10m0-.5V4a1.5 1.5 0 013 0v6m0-1.5a1.5 1.5 0 013 0V14c0 4-2.7 7-6.5 7-2.6 0-4.2-1.2-5.6-3.3L3.6 14.6a1.6 1.6 0 012.6-1.8L8 15"/></svg></span><h3>Escolha dos dois lados</h3><p>A casa escolhe quem trabalha. O freela escolhe quando e onde trabalha. Ninguém é obrigado a nada.</p></div>
+      <div class="feat"><span class="ic"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6 9.5v5M18 9.5v5"/></svg></span><h3>Pix no dia seguinte</h3><p>O freela recebe o valor do turno no Pix no dia seguinte, sem taxa descontada.</p></div>
+      <div class="feat"><span class="ic"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span><h3>Uma fatura só</h3><p>A casa paga os turnos numa fatura com nota. Sem dinheiro vivo, sem planilha de diária.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="sobre">
+  <svg class="band-ring" viewBox="0 0 100 100" aria-hidden="true" style="color:currentColor"><use href="#o-sym"/></svg>
+  <div class="wrap band-grid">
+    <div style="display:grid;gap:18px">
+      <span class="eyebrow">Sobre a Opeer</span>
+      <h2>Nasce de quem já está dentro da operação</h2>
+      <p class="lead">A Opeer é uma empresa do Grupo Hashtag, que coloca gente pra rodar dentro de restaurantes todos os dias. O suporte em campo, o pagamento por Pix e a relação com as casas já existem. A Opeer usa essa base pra resolver o turno de quem precisa de reforço.</p>
+    </div>
+    <div>
+      <div class="nums">
+        <div><b>+600</b><small>lojas parceiras do grupo</small></div>
+        <div><b>+600 mil</b><small>entregas por mês</small></div>
+        <div><b>Todo dia</b><small>suporte circulando nas lojas</small></div>
+        <div><b>Milhares</b><small>de diárias pagas no Pix</small></div>
+      </div>
+      <p class="note">Números do Grupo Hashtag. Os números da Opeer entram aqui conforme a operação roda.</p>
+    </div>
+  </div>
+</section>
+
+<section class="tint">
+  <div class="wrap">
+    <div class="sec-head center"><span class="eyebrow">Pra quem é</span><h2>Onde tem turno, tem Opeer</h2></div>
+    <div class="segs">
+      <div class="seg"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h10l-1 7a4 4 0 01-8 0L7 3z"/><path d="M12 14v7M8.5 21h7"/></svg><b>Bares</b></div>
+      <div class="seg"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 14v6h10v-6"/><path d="M7 14a4 4 0 01-1.3-7.8A4.5 4.5 0 0112 4a4.5 4.5 0 016.3 2.2A4 4 0 0117 14H7z"/><path d="M7 17h10"/></svg><b>Restaurantes</b></div>
+      <div class="seg"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10a8 5 0 0116 0H4z"/><path d="M3.5 13.5h17M5 17h14a1 1 0 01-1 2.5H6A1 1 0 015 17z"/></svg><b>Fast food</b></div>
+      <div class="seg"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h13v5a6 6 0 01-6 6h-1a6 6 0 01-6-6V8z"/><path d="M17 9.5h1.5a2.5 2.5 0 010 5H17M7 3.5v2M10.5 3.5v2M14 3.5v2"/></svg><b>Padarias e cafés</b></div>
+      <div class="seg"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16v-7a2 2 0 00-2-2H6a2 2 0 00-2 2v7z"/><path d="M4 15c1.3 1 2.7 1 4 0s2.7-1 4 0 2.7 1 4 0 2.7-1 4 0M12 11V7.5"/><path d="M12 3.5c.9 1 .9 2 0 3-.9-1-.9-2 0-3z"/></svg><b>Buffets</b></div>
+      <div class="seg"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4.5-12 7.5 7.5L4 20z"/><path d="M14 4.5c.6 1 .6 2.2 0 3.2M19.5 10c-1-.6-2.2-.6-3.2 0M17 3.5l.5 1.5M20.5 6.5l-1.5.5"/></svg><b>Eventos</b></div>
+    </div>
+  </div>
+</section>
+
+<section id="duvidas">
+  <div class="wrap">
+    <div class="sec-head center"><span class="eyebrow">Dúvidas</span><h2>Perguntas frequentes</h2></div>
+    <div class="faq-list">
+      <details><summary>O que é a Opeer?</summary><p>Uma plataforma de turnos avulsos. Bares, restaurantes e eventos abrem turnos quando precisam de reforço, profissionais verificados se candidatam e a casa escolhe quem vai. A Opeer intermedeia, paga o profissional e emite a nota.</p></details>
+      <details><summary>A Opeer gera vínculo empregatício?</summary><p>A Opeer intermedeia cada turno de forma avulsa, com termo, pagamento pela plataforma e nota fiscal. O profissional escolhe quando e onde trabalha, e a casa não paga ninguém por fora.</p></details>
+      <details><summary>Quais funções têm turno?</summary><p>Salão, cozinha, bar, eventos e apoio: cumim, garçom, ajudante de cozinha, pia, atendente, serviços gerais, barback, bartender, caixa, chapeiro e muitas outras.</p></details>
+      <details><summary>Em quais cidades a Opeer funciona?</summary><p>Estamos começando e abrindo novas regiões conforme a base de casas e profissionais cresce. Fale com a gente pra saber da sua.</p></details>
+      <details><summary>Quando o freela recebe?</summary><p>No dia seguinte ao turno, no Pix, sem taxa descontada.</p></details>
+      <details><summary>Como minha empresa começa a usar?</summary><p>O acesso é liberado por convite. Preencha o formulário na página para empresas e o nosso time entra em contato.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <svg class="cta-ring" viewBox="0 0 100 100" aria-hidden="true" style="color:currentColor"><use href="#o-sym"/></svg><svg class="cta-ring l" viewBox="0 0 100 100" aria-hidden="true" style="color:currentColor"><use href="#o-sym"/></svg>
+  <div class="wrap inner">
+    <h2>Bora resolver o turno de hoje?</h2>
+    <p class="lead" style="color:#E3F5FC">Escolha o seu lado.</p>
+    <div class="btns" style="justify-content:center">
+      <a class="btn btn-navy btn-lg" href="/empresas/#acesso">Sou empresa <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-white btn-lg" href="https://wa.me/5585992775674?text=Oi!%20Vim%20pelo%20site%20e%20quero%20fazer%20turnos" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2A9.7 9.7 0 003.7 17l-1.4 4.8 5-1.3A9.7 9.7 0 1012 2.2zm0 17.7c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 01-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 00-.7.3c-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.2.7.5-.1 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2l-.4-.3z"/></svg>Sou freela</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="foot"><div class="wrap">
+<div class="foot-grid">
+  <div><a class="brand" href="/" aria-label="Opeer"><svg class="" viewBox="0 0 338 104" role="img" aria-label="Opeer" style="--sym:#009FD1;--word:#0B2E47"><use href="#o-logo"/></svg></a><p class="small" style="max-width:34ch">Turnos avulsos pra bares, restaurantes e eventos, com profissionais verificados e suporte de gente de verdade.</p></div>
+  <div><h4>Empresas</h4><a href="/empresas/">Opeer para empresas</a><a href="/empresas/#como">Como funciona</a><a href="/empresas/#acesso">Pedir acesso</a></div>
+  <div><h4>Freelas</h4><a href="/freela/">Opeer para freelas</a><a href="https://wa.me/5585992775674?text=Oi!%20Vim%20pelo%20site%20e%20quero%20fazer%20turnos" target="_blank" rel="noopener">Cadastro no WhatsApp</a><a href="/freela/#duvidas">Dúvidas</a></div>
+  <div><h4>Siga</h4><a href="https://instagram.com/opeer.app" target="_blank" rel="noopener">@opeer.app</a><a href="https://instagram.com/opeer.freela" target="_blank" rel="noopener">@opeer.freela</a><a href="/#sobre">Sobre a Opeer</a></div>
+</div>
+<div class="bottom"><span>© 2026 Opeer · Uma empresa do Grupo Hashtag</span><span><a href="#" style="font-size:13px">Termos de uso</a> · <a href="#" style="font-size:13px">Privacidade</a></span></div>
+</div></footer>
+<script>
+
+(function(){
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var clock = document.getElementById('clock');
+  var mins = 17*60+42;
+  function pad(n){return (n<10?'0':'')+n}
+  var row = document.querySelector('#rows tr[data-i="3"]');
+  var states = [['wait','Aberto'],['open','2 candidatos'],['open','5 candidatos'],['ok','Escolhido']];
+  var k = 0;
+  if (reduce || !row) return;
+  setInterval(function(){
+    mins++; clock.textContent = pad(Math.floor(mins/60)%24)+':'+pad(mins%60);
+    k = (k+1)%states.length;
+    var chip = row.querySelector('.chip');
+    chip.className = 'chip '+states[k][0]; chip.textContent = states[k][1];
+    row.classList.remove('flash'); void row.offsetWidth; row.classList.add('flash');
+  }, 2600);
+})();
+
+</script>
+</body></html>
