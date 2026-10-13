@@ -207,6 +207,9 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; }
 .checks b { font-family: var(--f-display); font-weight: 600; color: var(--navy); display: block; }
 .checks span { color: var(--grey); font-size: 15px; }
 
+/* audit fixes */
+@media (max-width: 560px) { .hero .btns { width: 100%; } .hero .btns .btn { flex: 1 1 100%; } }
+
 
 /* paths */
 .paths { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; max-width: 560px; }
@@ -232,6 +235,8 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; }
 .board td b { font-family: var(--f-display); font-weight: 600; color: var(--navy); display: block; font-size: 14.5px; }
 .board td small { color: var(--grey); font-size: 12.5px; }
 .board td.t { font-variant-numeric: tabular-nums; color: var(--ink); font-weight: 600; white-space: nowrap; }
+@media (min-width: 600px) { .board td, .board td b, .board td small { white-space: nowrap; } }
+.board .foot-row b { white-space: nowrap; }
 .board td:last-child { text-align: right; }
 .board tr.flash td { animation: flash 1.2s ease; }
 @keyframes flash { 0% { background: var(--cyan-soft); } 100% { background: transparent; } }
@@ -277,10 +282,10 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; }
 .stop .who { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--grey); }
 @media (max-width: 900px) {
   .line { grid-template-columns: 1fr; gap: 22px; }
-  .line::before { left: 59px; right: auto; top: 10px; bottom: 10px; width: 2px; height: auto; background: repeating-linear-gradient(180deg, var(--cyan) 0 8px, transparent 8px 14px); }
-  .stop { grid-template-columns: 48px 22px 1fr; justify-items: start; text-align: left; column-gap: 14px; row-gap: 2px; padding: 0; }
+  .line::before { left: 88px; right: auto; top: 10px; bottom: 10px; width: 2px; height: auto; background: repeating-linear-gradient(180deg, var(--cyan) 0 8px, transparent 8px 14px); }
+  .stop { grid-template-columns: 64px 22px 1fr; justify-items: start; text-align: left; column-gap: 14px; row-gap: 2px; padding: 0; }
   .stop time { grid-row: 1 / span 3; padding: 0; background: none; align-self: start; margin-top: 1px; }
-  .stop .pt { grid-row: 1 / span 3; }
+  .stop .pt { grid-row: 1 / span 3; grid-column: 2; }
   .stop .who, .stop b, .stop span { grid-column: 3; }
 }
 
